@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
+<head>
+    <title>Mitgliedschaft</title>
+</head>
+<body>
+<div layout:fragment="content">
+    <div class="container">
+        <p class="lead my-4">Einfach die Beitrittserklärung herunterladen, ausfüllen und abgeben.</p>
+        <button class="btn btn-warning btn-lg">
+            <a class="link-dark" th:href="@{/membership/download}" th:text="Beitrittserklärung"></a>
+        </button>
+    </div>
+</div>
+</body>
+</html>
