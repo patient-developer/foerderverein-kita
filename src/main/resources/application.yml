@@ -2,3 +2,7 @@ server:
   port: ${SERVER_PORT:8080}
   servlet:
     context-path: ${SERVER_CONTEXT_PATH:}
+spring:
+  web:
+    resources:
+      static-locations: ${STATIC_RESOURCE_LOCATIONS}

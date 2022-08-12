@@ -24,6 +24,6 @@ public class MembershipController {
   @ResponseBody
   @GetMapping(value = "/membership/download", produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
   public FileSystemResource declarationOfMembershipDownloadGet() {
-    return new FileSystemResource(membershipService.getDeclarationOfMembership());
+    return membershipService.getDeclarationOfMembership();
   }
 }
