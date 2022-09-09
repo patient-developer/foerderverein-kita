@@ -7,6 +7,9 @@ import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class AssociationController {
-    @GetMapping("/association")
-    ModelAndView associationGet(){return new ModelAndView(Views.ASSOCIATION);}
+
+  @GetMapping("/association")
+  ModelAndView associationGet() {
+    return new ModelAndView(Views.ASSOCIATION);
+  }
 }

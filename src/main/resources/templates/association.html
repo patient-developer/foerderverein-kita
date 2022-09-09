@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="~{layout}">
 <head>
@@ -16,24 +17,18 @@
             Bewegung, Kunst
             und Musik in
             Zusammenarbeit mit unterschiedlichen Institutionen gefördert:</p>
-        <ul class="text-start">
-            <li class="lead">
-                Tanzen mit der <a class="link-dark" href="https://www.tanzschule-srutek.de/">Tanzschule Srutek</a>
-            </li>
-            <li class="lead">
-                Filzen, Malen, Zeichnen mit der <a class="link-dark" href="https://artefix.de/">Kunstschule Artefix</a>
-            </li>
-            <li class="lead">
-                Mit dem Esel durch den Wald mit <a class="link-dark" href="http://www.maltiz-waldpaedagogik.de/">Maltiz
-                Naturerfahrung & Waldpädagogik e.V.</a>
-            </li>
-            <li class="lead">
-                Interkulturelles Ramesch-Projekt "Der Klang Afrikas"
-            </li>
-            <li class="lead">
-                Naturmobil mit Lernstation des Landesverbandes der Jäger
-            </li>
-        </ul>
+        <div class="row" th:each="pressReleaseInfo : ${@pressReleaseConfig.getPressReleaseInfos()}">
+            <div class="col-md">
+                <div class="card bg-success border-success">
+                    <div class="card-body text-center-center">
+                        <div class="card-header my-3" th:text="${pressReleaseInfo.getTitle()}"></div>
+                        <img src="#" th:src="${pressReleaseInfo.getFilename()}"
+                             class="card-img my-3"
+                             alt="...">
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 </body>

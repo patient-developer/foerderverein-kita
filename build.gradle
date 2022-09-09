@@ -24,6 +24,7 @@ dependencies {
 	implementation 'org.webjars:webjars-locator:0.45'
 
 	annotationProcessor 'org.projectlombok:lombok:1.18.24'
+	annotationProcessor "org.springframework.boot:spring-boot-configuration-processor"
 
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
