@@ -19,12 +19,13 @@
             Zusammenarbeit mit unterschiedlichen Institutionen gefördert:</p>
         <div class="row" th:each="pressReleaseInfo : ${@pressReleaseConfig.getPressReleaseInfos()}">
             <div class="col-md">
-                <div class="card bg-success border-success">
+                <div class="card bg-success border-dark border-2 mb-2">
                     <div class="card-body text-center-center">
-                        <div class="card-header my-3" th:text="${pressReleaseInfo.getTitle()}"></div>
+                        <div class="card-header my-2" th:text="${pressReleaseInfo.getTitle()}"></div>
                         <img src="#" th:src="${pressReleaseInfo.getFilename()}"
-                             class="card-img my-3"
+                             class="card-img my-2"
                              alt="...">
+                        <div class="text-center small" th:text="${pressReleaseInfo.getSource()}"></div>
                     </div>
                 </div>
             </div>
