@@ -17,8 +17,8 @@
             Bewegung, Kunst
             und Musik in
             Zusammenarbeit mit unterschiedlichen Institutionen gefördert:</p>
-        <div class="row" th:each="pressReleaseInfo : ${@pressReleaseConfig.getPressReleaseInfos()}">
-            <div class="col-md">
+        <div class="row">
+            <div class="col-md" th:each="pressReleaseInfo : ${@pressReleaseConfig.getPressReleaseInfos()}">
                 <div class="card bg-success border-dark border-2 mb-2">
                     <div class="card-body text-center-center">
                         <div class="card-header my-2" th:text="${pressReleaseInfo.getTitle()}"></div>
