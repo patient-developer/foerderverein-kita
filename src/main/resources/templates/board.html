@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="~{layout}">
 <head>
@@ -9,25 +10,14 @@
 <div layout:fragment="content">
     <div class="container">
         <div class="row">
-            <div class="col-md">
+            <div class="col-md" th:each="boardMemberInfo : ${@boardMemberConfig.getBoardMemberInfos()}">
                 <div class="card bg-success border-success">
                     <div class="card-body text-center">
-                        <div class="card-header my-3" th:text="${@config.getFirstBoardMemberFullName()}"></div>
-                        <img src="#" th:src="${@config.getFirstBoardMemberImageFilename()}"
+                        <div class="card-header my-3" th:text="${boardMemberInfo.getFullName()}"></div>
+                        <img src="#" th:src="${boardMemberInfo.getImageFilename()}"
                              class="rounded-circle card-img my-3"
                              alt="..."/>
-                        <div class="card-text my-3" th:utext="${@config.getFirstBoardMemberText()}"></div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md">
-                <div class="card bg-success border-success">
-                    <div class="card-body text-center">
-                        <div class="card-header my-3" th:text="${@config.getSecondBoardMemberFullName()}"></div>
-                        <img src="#" th:src="${@config.getSecondBoardMemberImageFilename()}"
-                             class="rounded-circle card-img my-3"
-                             alt="..."/>
-                        <div class="card-text my-3" th:utext="${@config.getSecondBoardMemberText()}"></div>
+                        <div class="card-text my-3" th:utext="${boardMemberInfo.getIntroduction()}"></div>
                     </div>
                 </div>
             </div>

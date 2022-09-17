@@ -19,24 +19,6 @@ public class Config {
   @Value("${LOGO_FILENAME}")
   private final String logo;
 
-  @Value("${FIRST_BOARD_MEMBER_FULL_NAME}")
-  private final String firstBoardMemberFullName;
-
-  @Value("${FIRST_BOARD_MEMBER_IMAGE_FILENAME}")
-  private final String firstBoardMemberImageFilename;
-
-  @Value("${FIRST_BOARD_MEMBER_TEXT}")
-  private final String firstBoardMemberText;
-
-  @Value("${SECOND_BOARD_MEMBER_FULL_NAME}")
-  private final String secondBoardMemberFullName;
-
-  @Value("${SECOND_BOARD_MEMBER_IMAGE_FILENAME}")
-  private final String secondBoardMemberImageFilename;
-
-  @Value("${SECOND_BOARD_MEMBER_TEXT}")
-  private final String secondBoardMemberText;
-
   @Value("${CONTACT_E_MAIL}")
   private final String contactEMail;
 
