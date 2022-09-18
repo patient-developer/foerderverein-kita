@@ -19,6 +19,9 @@ public class Config {
   @Value("${LOGO_FILENAME}")
   private final String logo;
 
+  @Value("${IMPRINT_REPRESENTATIVE}")
+  private final String imprintRepresentative;
+
   @Value("${CONTACT_E_MAIL}")
   private final String contactEMail;
 

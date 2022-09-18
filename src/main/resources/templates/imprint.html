@@ -12,7 +12,7 @@
             <h1>Impressum</h1>
             <p class="lead my-4" th:text="${@config.getAssociationName()}"></p>
             <p class="lead my-4" th:utext="${@config.getAssociationAddress()}"></p>
-            <p class="lead my-4" th:text="${@config.getFirstBoardMemberFullName()}"></p>
+            <p class="lead my-4" th:text="${@config.getImprintRepresentative()}"></p>
             <p class="lead my-4">
                 <a class="link-dark" th:href="'mailto:'+ ${@config.getContactEMail()}"
                    th:text="${@config.getContactEMail()}"></a>
