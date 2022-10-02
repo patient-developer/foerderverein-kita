@@ -8,15 +8,20 @@
 <body>
 <div layout:fragment="content">
     <div class="container">
-        <div class="d-sm-flex align-items-center justify-content-between">
-            <div>
+        <div class="row">
+            <div class="col-md align-items-center my-3">
+                <img class="img-fluid w-75" th:src="${@config.getAssociationLogo()}" src="#" alt="...">
+            </div>
+            <div class="col-md align-items-center my-3">
                 <h1>Der Förderverein</h1>
                 <p class="lead my-4">Wir machen es möglich.</p>
                 <button class="btn btn-warning btn-lg">
                     <a class="link-dark" th:href="@{/membership}">Mach mit!</a>
                 </button>
             </div>
-            <img class="img-fluid w-50 d-none d-sm-block" th:src="${@config.getLogo()}">
+            <div class="col-md align-items-center my-3">
+                <img class="img-fluid w-75" th:src="${@config.getKindergartenLogo()}" src="#" alt="...">
+            </div>
         </div>
     </div>
 </div>

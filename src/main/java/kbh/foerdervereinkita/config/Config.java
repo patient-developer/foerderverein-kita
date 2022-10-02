@@ -10,27 +10,30 @@ import org.springframework.stereotype.Component;
 @AllArgsConstructor
 public class Config {
 
-  @Value("${ASSOCIATION_NAME}")
-  private final String associationName;
+    @Value("${ASSOCIATION_NAME}")
+    private final String associationName;
 
-  @Value("${ASSOCIATION_ADDRESS}")
-  private final String associationAddress;
+    @Value("${ASSOCIATION_ADDRESS}")
+    private final String associationAddress;
 
-  @Value("${LOGO_FILENAME}")
-  private final String logo;
+    @Value("${ASSOCIATION_LOGO_FILENAME}")
+    private final String associationLogo;
 
-  @Value("${IMPRINT_REPRESENTATIVE}")
-  private final String imprintRepresentative;
+    @Value("${KINDERGARTEN_LOGO_FILENAME}")
+    private final String kindergartenLogo;
 
-  @Value("${CONTACT_E_MAIL}")
-  private final String contactEMail;
+    @Value("${IMPRINT_REPRESENTATIVE}")
+    private final String imprintRepresentative;
 
-  @Value("${REGISTER_NUMBER}")
-  private final String registerNumber;
+    @Value("${CONTACT_E_MAIL}")
+    private final String contactEMail;
 
-  @Value("${DECLARATION_OF_MEMBERSHIP_FILENAME}")
-  private final String declarationOfMembershipFilename;
+    @Value("${REGISTER_NUMBER}")
+    private final String registerNumber;
 
-  @Value("${SITEMAP_FILENAME}")
-  private final String sitemapFilename;
+    @Value("${DECLARATION_OF_MEMBERSHIP_FILENAME}")
+    private final String declarationOfMembershipFilename;
+
+    @Value("${SITEMAP_FILENAME}")
+    private final String sitemapFilename;
 }
