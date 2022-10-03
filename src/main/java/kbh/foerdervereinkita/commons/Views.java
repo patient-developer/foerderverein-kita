@@ -10,5 +10,5 @@ public class Views {
   public static final String IMPRINT = "imprint";
   public static final String PRIVACY = "privacy";
   public static final String EVENTS = "events";
-  public static final String MEMBERSHIP = "membership";
+  public static final String SUPPORT = "support";
 }

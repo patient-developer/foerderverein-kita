@@ -10,30 +10,36 @@ import org.springframework.stereotype.Component;
 @AllArgsConstructor
 public class Config {
 
-    @Value("${ASSOCIATION_NAME}")
-    private final String associationName;
+  @Value("${ASSOCIATION_NAME}")
+  private final String associationName;
 
-    @Value("${ASSOCIATION_ADDRESS}")
-    private final String associationAddress;
+  @Value("${ASSOCIATION_ADDRESS}")
+  private final String associationAddress;
 
-    @Value("${ASSOCIATION_LOGO_FILENAME}")
-    private final String associationLogo;
+  @Value("${ASSOCIATION_LOGO_FILENAME}")
+  private final String associationLogo;
 
-    @Value("${KINDERGARTEN_LOGO_FILENAME}")
-    private final String kindergartenLogo;
+  @Value("${CASH_ACCOUNT_IBAN}")
+  private final String cashAccountIban;
 
-    @Value("${IMPRINT_REPRESENTATIVE}")
-    private final String imprintRepresentative;
+  @Value("${CASH_ACCOUNT_CUSTODIAN}")
+  private final String cashAccountCustodian;
 
-    @Value("${CONTACT_E_MAIL}")
-    private final String contactEMail;
+  @Value("${KINDERGARTEN_LOGO_FILENAME}")
+  private final String kindergartenLogo;
 
-    @Value("${REGISTER_NUMBER}")
-    private final String registerNumber;
+  @Value("${IMPRINT_REPRESENTATIVE}")
+  private final String imprintRepresentative;
 
-    @Value("${DECLARATION_OF_MEMBERSHIP_FILENAME}")
-    private final String declarationOfMembershipFilename;
+  @Value("${CONTACT_E_MAIL}")
+  private final String contactEMail;
 
-    @Value("${SITEMAP_FILENAME}")
-    private final String sitemapFilename;
+  @Value("${REGISTER_NUMBER}")
+  private final String registerNumber;
+
+  @Value("${DECLARATION_OF_MEMBERSHIP_FILENAME}")
+  private final String declarationOfMembershipFilename;
+
+  @Value("${SITEMAP_FILENAME}")
+  private final String sitemapFilename;
 }

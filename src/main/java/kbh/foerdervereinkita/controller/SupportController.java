@@ -12,17 +12,17 @@ import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 @RequiredArgsConstructor
-public class MembershipController {
+public class SupportController {
 
   private final MembershipService membershipService;
 
-  @GetMapping("/membership")
+  @GetMapping("/support")
   ModelAndView membershipGet() {
-    return new ModelAndView(Views.MEMBERSHIP);
+    return new ModelAndView(Views.SUPPORT);
   }
 
   @ResponseBody
-  @GetMapping(value = "/membership/download", produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
+  @GetMapping(value = "/support/download", produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
   public FileSystemResource declarationOfMembershipDownloadGet() {
     return membershipService.getDeclarationOfMembership();
   }

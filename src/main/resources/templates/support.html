@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
+<head>
+    <title>Unterstützung</title>
+</head>
+<body>
+<div layout:fragment="content">
+    <div class="container">
+        <div class="row">
+            <div class="col-md text-center my-3">
+                <p class="lead my-4">Einfach die Beitrittserklärung herunterladen, ausfüllen und abgeben.</p>
+                <button class="btn btn-warning btn-lg">
+                    <a class="link-dark" th:href="@{/support/download}" th:text="Beitrittserklärung"></a>
+                </button>
+            </div>
+            <div class="col-md text-center my-3">
+                <p class="lead my-4">Unterstütze uns auch gerne mit einer Spende.</p>
+                <p class="lead my-4" th:text="${@config.getAssociationName()}"></p>
+                <p class="lead my-4" th:text="${@config.getCashAccountIban()}"></p>
+                <p class="lead my-4" th:text="${@config.getCashAccountCustodian()}"></p>
+                <div class="border border-dark border-2">
+                    <p class="my-2 fw-bold">Bitte lass uns unbedingt deine Kontaktdaten zwecks
+                        Spendenbescheinigung zukommen!</p>
+                    <a class="link-dark" th:href="'mailto:'+ ${@config.getContactEMail()}"
+                       th:text="${@config.getContactEMail()}"></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
