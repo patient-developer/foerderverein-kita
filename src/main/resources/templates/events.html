@@ -4,19 +4,14 @@
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="~{layout}">
 <head>
-    <title>Der Förderverein</title>
+    <title>Veranstaltungen</title>
 </head>
 <body>
 <div layout:fragment="content">
     <div class="container">
-        <h1>Der Förderverein</h1>
-        <p class="lead my-4 text-center">Am 1. März 2007 wurde der "Förderverein Bildungsprojekte der Kindertagesstätte
-            Sonnenfeld
-            e.V." gegründet</p>
+        <h1>Veranstaltungen</h1>
         <p class="lead my-4 text-center">In den letzten Jahren wurden zahlreiche Projekte aus den Bereichen Bildung,
-            Bewegung, Kunst
-            und Musik in
-            Zusammenarbeit mit unterschiedlichen Institutionen gefördert:</p>
+            Bewegung, Kunst und Musik in Zusammenarbeit mit unterschiedlichen Institutionen gefördert.</p>
         <div class="row">
             <div class="col-md" th:each="pressReleaseInfo : ${@pressReleaseConfig.getPressReleaseInfos()}">
                 <div class="card bg-success border-dark border-2 mb-2">

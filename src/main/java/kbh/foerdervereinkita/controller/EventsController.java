@@ -6,10 +6,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-public class AssociationController {
+public class EventsController {
 
-  @GetMapping("/association")
+  @GetMapping("/events")
   ModelAndView associationGet() {
-    return new ModelAndView(Views.ASSOCIATION);
+    return new ModelAndView(Views.EVENTS);
   }
 }
