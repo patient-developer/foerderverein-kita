@@ -161,3 +161,9 @@ buildNumber.properties
 
 # images
 /src/main/resources/static/*
+
+# local application properties
+/src/main/resources/application-dev.yml
+
+# docker
+/docker-compose/
