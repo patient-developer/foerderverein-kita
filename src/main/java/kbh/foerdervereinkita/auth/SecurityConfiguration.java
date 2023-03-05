@@ -45,7 +45,8 @@ public class SecurityConfiguration {
             "/events",
             "/board",
             "/webjars/**",
-            "/images/**")
+            "/images/**",
+            "/event-registrations")
         .permitAll()
         .and()
         .formLogin()

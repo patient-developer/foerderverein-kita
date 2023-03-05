@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
+<head>
+    <title>Anmeldung</title>
+</head>
+<body>
+<div layout:fragment="content">
+    <div class="container">
+        <div class="container text-center my-2">
+            <h2>Flohmarktanmeldung</h2>
+        </div>
+    </div>
+    <div class="container">
+        <div class="alert alert-success my-2 text-center" role="alert" th:if="${success}" th:text="${success}"></div>
+    </div>
+    <div class="container">
+        <form action="#" style="..." th:action="@{/event-registrations}" th:method="POST"
+              th:object="${eventRegistrationForm}">
+            <div class="my-2">
+                <input type="text" class="form-control" placeholder="Name" th:field="*{fullName}">
+            </div>
+            <div class="my-2">
+                <input type="email" class="form-control" placeholder="E-Mail" th:field="*{eMail}">
+            </div>
+            <div class="my-2">
+                <input type="text" class="form-control" placeholder="Kommentar" th:field="*{comment}">
+            </div>
+            <div class="my-2">
+                <input type="submit" value="Speichern">
+            </div>
+        </form>
+    </div>
+</div>
+
+</body>
+</html>
