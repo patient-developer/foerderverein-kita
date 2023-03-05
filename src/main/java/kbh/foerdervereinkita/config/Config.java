@@ -36,10 +36,4 @@ public class Config {
 
   @Value("${REGISTER_NUMBER}")
   private final String registerNumber;
-
-  @Value("${DECLARATION_OF_MEMBERSHIP_FILENAME}")
-  private final String declarationOfMembershipFilename;
-
-  @Value("${SITEMAP_FILENAME}")
-  private final String sitemapFilename;
 }

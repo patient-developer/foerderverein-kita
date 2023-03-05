@@ -1,17 +1,19 @@
 package kbh.foerdervereinkita.service;
 
-import kbh.foerdervereinkita.config.Config;
 import lombok.RequiredArgsConstructor;
-import org.springframework.core.io.FileSystemResource;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
 public class MembershipService {
 
-  private final Config config;
+  @Value("${DECLARATION_OF_MEMBERSHIP_FILENAME}")
+  private final String declarationOfMembershipFilename;
 
-  public FileSystemResource getDeclarationOfMembership() {
-    return new FileSystemResource(config.getDeclarationOfMembershipFilename());
+  public Resource getDeclarationOfMembership() {
+    return new ClassPathResource(declarationOfMembershipFilename);
   }
 }

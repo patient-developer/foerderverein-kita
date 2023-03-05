@@ -1,4 +1,4 @@
-package kbh.foerdervereinkita.controller;
+package kbh.foerdervereinkita.mvc.controller;
 
 import kbh.foerdervereinkita.commons.Views;
 import org.springframework.stereotype.Controller;

@@ -1,9 +1,9 @@
-package kbh.foerdervereinkita.controller;
+package kbh.foerdervereinkita.mvc.controller;
 
 import kbh.foerdervereinkita.commons.Views;
 import kbh.foerdervereinkita.service.MembershipService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.core.io.FileSystemResource;
+import org.springframework.core.io.Resource;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,8 +22,8 @@ public class SupportController {
   }
 
   @ResponseBody
-  @GetMapping(value = "/support/download", produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
-  public FileSystemResource declarationOfMembershipDownloadGet() {
+  @GetMapping(value = "/support/download", produces = MediaType.APPLICATION_PDF_VALUE)
+  public Resource declarationOfMembershipDownloadGet() {
     return membershipService.getDeclarationOfMembership();
   }
 }

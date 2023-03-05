@@ -1,4 +1,4 @@
-package kbh.foerdervereinkita.controller;
+package kbh.foerdervereinkita.mvc.controller;
 
 import kbh.foerdervereinkita.commons.Views;
 import org.springframework.stereotype.Controller;
@@ -6,10 +6,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-public class BoardController {
+public class ImprintController {
 
-  @GetMapping("/board")
-  ModelAndView boardGet() {
-    return new ModelAndView(Views.BOARD);
+  @GetMapping("/imprint")
+  ModelAndView imprintGet() {
+    return new ModelAndView(Views.IMPRINT);
   }
 }

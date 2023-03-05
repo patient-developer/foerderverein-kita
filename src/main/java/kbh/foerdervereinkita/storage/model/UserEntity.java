@@ -12,7 +12,7 @@ import java.util.HashSet;
 @Entity
 @Table(
     name = "users",
-    indexes = {@Index(name = "username", columnList = "username", unique = true)})
+    indexes = {@Index(name = "uc_users_username", columnList = "username", unique = true)})
 public class UserEntity {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,7 +25,7 @@ public class UserEntity {
   @Column(name = "password", nullable = false)
   private String password;
 
-  @ManyToMany(fetch = FetchType.EAGER)
+  @ManyToMany
   @JoinTable(
       joinColumns = @JoinColumn(name = "user_id"),
       inverseJoinColumns = @JoinColumn(name = "role_id"))

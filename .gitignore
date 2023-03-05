@@ -165,5 +165,5 @@ buildNumber.properties
 # local application properties
 /src/main/resources/application-dev.yml
 
-# docker
-/docker-compose/
+/src/main/resources/pdf-files/
+/src/main/resources/static/images

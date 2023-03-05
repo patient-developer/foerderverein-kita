@@ -1,17 +1,19 @@
 package kbh.foerdervereinkita.service;
 
-import kbh.foerdervereinkita.config.Config;
 import lombok.RequiredArgsConstructor;
-import org.springframework.core.io.FileSystemResource;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
 public class SitemapService {
 
-  private final Config config;
+  @Value("${SITEMAP_FILENAME}")
+  private final String sitemapFilename;
 
-  public FileSystemResource getSitemapFile() {
-    return new FileSystemResource(config.getSitemapFilename());
+  public Resource getSitemapFile() {
+    return new ClassPathResource(sitemapFilename);
   }
 }

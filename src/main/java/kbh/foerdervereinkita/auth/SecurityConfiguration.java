@@ -43,7 +43,9 @@ public class SecurityConfiguration {
             "/privacy",
             "/imprint",
             "/events",
-            "/board")
+            "/board",
+            "/webjars/**",
+            "/images/**")
         .permitAll()
         .and()
         .formLogin()

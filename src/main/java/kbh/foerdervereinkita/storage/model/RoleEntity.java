@@ -13,7 +13,7 @@ import java.util.Set;
 @Entity
 @Table(
     name = "roles",
-    indexes = {@Index(name = "role", columnList = "role", unique = true)})
+    indexes = {@Index(name = "uc_roles_role", columnList = "role", unique = true)})
 public class RoleEntity {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -29,5 +29,5 @@ public class RoleEntity {
       name = "users_roles",
       joinColumns = @JoinColumn(name = "role_id"),
       inverseJoinColumns = @JoinColumn(name = "user_id"))
-  private Set<UserEntity> userEntities = new LinkedHashSet<>();
+  private Set<UserEntity> users = new LinkedHashSet<>();
 }
