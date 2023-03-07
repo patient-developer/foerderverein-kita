@@ -2,6 +2,7 @@ package kbh.foerdervereinkita.service.impl;
 
 import kbh.foerdervereinkita.dto.EventRegistrationDto;
 import kbh.foerdervereinkita.mapper.EventRegistrationMapper;
+import kbh.foerdervereinkita.service.EMailService;
 import kbh.foerdervereinkita.service.EventRegistrationService;
 import kbh.foerdervereinkita.storage.model.EventRegistrationEntity;
 import kbh.foerdervereinkita.storage.repository.EventRegistrationRepository;
@@ -14,11 +15,15 @@ public class EventRegistrationServiceImpl implements EventRegistrationService {
   private final EventRegistrationRepository repository;
   private final EventRegistrationMapper mapper;
 
+  private final EMailService eMailService;
+
   @Override
   public void register(EventRegistrationDto eventRegistrationDto) {
 
     EventRegistrationEntity entity = mapper.toEntity(eventRegistrationDto);
 
     repository.save(entity);
+
+    eMailService.sendMail();
   }
 }
