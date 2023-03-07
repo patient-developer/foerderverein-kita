@@ -18,7 +18,7 @@
                 <div class="card bg-success border-dark border-2 mb-2">
                     <div class="card-body text-center-center">
                         <div class="card-header my-2" th:text="${pressReleaseInfo.getTitle()}"></div>
-                        <img src="#" th:src="@{'/images/' + ${pressReleaseInfo.getFilename()}}"
+                        <img src="#" th:src="@{'~/images/' + ${pressReleaseInfo.getFilename()}}"
                              class="card-img my-2"
                              alt="...">
                         <div class="text-center small" th:text="${pressReleaseInfo.getSource()}"></div>
