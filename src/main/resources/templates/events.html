@@ -14,11 +14,11 @@
         <p class="lead my-4 text-center">In den letzten Jahren wurden zahlreiche Projekte aus den Bereichen Bildung,
             Bewegung, Kunst und Musik in Zusammenarbeit mit unterschiedlichen Institutionen gefördert.</p>
         <div class="row">
-            <div class="col-md" th:each="pressReleaseInfo : ${@pressReleaseConfig.getPressReleaseInfos()}">
+            <div class="col-md" th:each="pressReleaseInfo : ${pressReleaseInfos}">
                 <div class="card bg-success border-dark border-2 mb-2">
                     <div class="card-body text-center-center">
                         <div class="card-header my-2" th:text="${pressReleaseInfo.getTitle()}"></div>
-                        <img src="#" th:src="${pressReleaseInfo.getFilename()}"
+                        <img src="#" th:src="@{'/images/' + ${pressReleaseInfo.getFilename()}}"
                              class="card-img my-2"
                              alt="...">
                         <div class="text-center small" th:text="${pressReleaseInfo.getSource()}"></div>

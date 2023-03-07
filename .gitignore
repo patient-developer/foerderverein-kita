@@ -167,3 +167,5 @@ buildNumber.properties
 
 /src/main/resources/pdf-files/
 /src/main/resources/static/images
+
+/src/main/resources/application-prod.yml
