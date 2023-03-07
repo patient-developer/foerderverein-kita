@@ -1,24 +1,28 @@
 package kbh.foerdervereinkita.storage.model;
 
 import jakarta.persistence.*;
-import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
 @Entity
-@IdClass(EventRegistrationPK.class)
-@Table(name = "event_registrations")
-public class EventRegistrationEntity implements Serializable {
+@Table(
+    name = "event_registrations",
+    indexes = {@Index(name = "e_mail", columnList = "e_mail", unique = true)})
+public class EventRegistrationEntity {
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  @Column(name = "id", nullable = false)
+  private Long id;
 
-  @Column(name = "full_name", nullable = false, columnDefinition = "VARCHAR(255)")
+  @Column(name = "full_name", nullable = false)
   private String fullName;
 
-  @Id
-  @Column(name = "e_mail", nullable = false, columnDefinition = "VARCHAR(255)", unique = true)
-  private String eMail;
+  @Column(name = "e_mail", nullable = false)
+  private String email;
 
-  @Column(name = "comment", columnDefinition = "TEXT")
+  @Lob
+  @Column(name = "comment")
   private String comment;
 }

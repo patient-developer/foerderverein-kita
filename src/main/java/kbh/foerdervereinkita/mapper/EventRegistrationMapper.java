@@ -12,6 +12,7 @@ public interface EventRegistrationMapper {
   @Mapping(target = "eMail", source = "EMail")
   EventRegistrationDto toDto(EventRegistrationForm form);
 
-  @Mapping(target = "EMail", source = "eMail")
+  @Mapping(target = "id", ignore = true)
+  @Mapping(target = "email", source = "eMail")
   EventRegistrationEntity toEntity(EventRegistrationDto dto);
 }

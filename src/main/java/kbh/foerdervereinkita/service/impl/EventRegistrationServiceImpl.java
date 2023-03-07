@@ -21,4 +21,9 @@ public class EventRegistrationServiceImpl implements EventRegistrationService {
 
     repository.save(entity);
   }
+
+  @Override
+  public boolean exists(String eMail) {
+    return repository.existsByEmail(eMail);
+  }
 }

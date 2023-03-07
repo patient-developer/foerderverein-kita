@@ -11,7 +11,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md align-items-center my-3">
-                <img class="img-fluid w-75" th:src="${@config.getAssociationLogo()}" src="#" alt="...">
+                <img class="img-fluid w-75" th:src="@{'/images/foerdervereinLogo5.svg'}" src="#" alt="...">
             </div>
             <div class="col-md align-items-center my-3">
                 <h1>Der Förderverein</h1>
@@ -19,9 +19,13 @@
                 <button class="btn btn-warning btn-lg">
                     <a class="link-dark fw-bold" th:href="@{/support}">Mach mit!</a>
                 </button>
+                </br>
+                <button class="btn btn-info btn-lg my-4">
+                    <a class="link-dark fw-bold" th:href="@{/event-registrations}">!!! Flohmarktanmeldung !!!</a>
+                </button>
             </div>
             <div class="col-md align-items-center my-3">
-                <img class="img-fluid w-75" th:src="${@config.getKindergartenLogo()}" src="#" alt="...">
+                <img class="img-fluid w-75" th:src="@{'/images/kitaLogoSvg_transp.svg'}" src="#" alt="...">
             </div>
         </div>
     </div>

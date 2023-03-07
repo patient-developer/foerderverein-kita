@@ -5,4 +5,6 @@ import kbh.foerdervereinkita.dto.EventRegistrationDto;
 public interface EventRegistrationService {
 
   void register(EventRegistrationDto eventRegistration);
+
+  boolean exists(String eMail);
 }

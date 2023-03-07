@@ -4,9 +4,12 @@ import kbh.foerdervereinkita.dto.EventRegistrationDto;
 import kbh.foerdervereinkita.mapper.EventRegistrationMapper;
 import kbh.foerdervereinkita.mvc.form.EventRegistrationForm;
 import kbh.foerdervereinkita.service.EventRegistrationService;
+import kbh.foerdervereinkita.validate.ValidationSequence;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -30,8 +33,14 @@ public class EventRegistrationController {
 
   @PostMapping(path = "/event-registrations")
   ModelAndView eventRegistrationPost(
-      @ModelAttribute("eventRegistrationForm") EventRegistrationForm form,
+      @Validated(ValidationSequence.class) @ModelAttribute("eventRegistrationForm")
+          EventRegistrationForm form,
+      BindingResult bindingResult,
       RedirectAttributes redirectAttributes) {
+
+    if (bindingResult.hasErrors()) {
+      return new ModelAndView("event-registration");
+    }
 
     EventRegistrationDto eventRegistration = mapper.toDto(form);
 

@@ -8,8 +8,19 @@
 <body>
 <div layout:fragment="content">
     <div class="container">
-        <div class="container text-center my-2">
-            <h2>Flohmarktanmeldung</h2>
+        <div class="container text-center my-4">
+            <h3>1. Baby- und Kinderflohmarkt Homburg</h3>
+            <h4>Samstag, den 22. April 2023</h4>
+            <h4>von 13 - 16 Uhr</h4>
+            <h4>Turnhalle der Grundschule Sonnenfeld Homburg</h4>
+        </div>
+    </div>
+    <div class="container text-center my-4">
+        <p>Gebühr für 3 Meter Stand 10 EUR oder 7 EUR mit Kuchenspende<br>Tische o.ä. müssen mitgebracht werden</p>
+    </div>
+    <div class="container">
+        <div class="container text-center my-4">
+            <h4>Anmeldung</h4>
         </div>
     </div>
     <div class="container">
@@ -20,17 +31,23 @@
               th:object="${eventRegistrationForm}">
             <div class="my-2">
                 <input type="text" class="form-control" placeholder="Name" th:field="*{fullName}">
+                <p th:if="${#fields.hasErrors('fullName')}" th:errors="*{fullName}"
+                   class="alert alert-warning my-2"></p>
             </div>
             <div class="my-2">
                 <input type="email" class="form-control" placeholder="E-Mail" th:field="*{eMail}">
+                <p th:if="${#fields.hasErrors('eMail')}" th:errors="*{eMail}" class="alert alert-warning my-2"></p>
             </div>
             <div class="my-2">
                 <input type="text" class="form-control" placeholder="Kommentar" th:field="*{comment}">
             </div>
             <div class="my-2">
-                <input type="submit" value="Speichern">
+                <input type="submit" value="Anmelden">
             </div>
         </form>
+    </div>
+    <div class="col-md align-items-center my-4 text-white">
+        <p>DSGVO Hinweis: Die erhobenen Daten dienen ausschließlich der Abwicklung des Flohmarkts und werden am Ende der Veranstaltung gelöscht.<br>Unsere allgemeinen DSGVO Bestimmungen finden Sie unter <a class="link-dark" th:href="@{/privacy}">Datenschutzerklärung</a>.</p>
     </div>
 </div>
 
