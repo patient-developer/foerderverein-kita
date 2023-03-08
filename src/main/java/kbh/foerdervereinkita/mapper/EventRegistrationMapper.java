@@ -11,11 +11,11 @@ import org.mapstruct.Mapping;
     imports = {java.time.LocalDateTime.class, java.time.ZoneId.class})
 public interface EventRegistrationMapper {
 
-  @Mapping(target = "eMail", source = "EMail")
+  @Mapping(target = "eMail", expression = "java(form.getEMail().trim())")
   EventRegistrationDto toDto(EventRegistrationForm form);
 
   @Mapping(target = "id", ignore = true)
-  @Mapping(target = "email", source = "eMail")
+  @Mapping(target = "email", expression = "java(dto.eMail().trim())")
   @Mapping(
       target = "registrationTimestamp",
       expression = "java(LocalDateTime.now().atZone(ZoneId.of(\"Europe/Paris\")).toInstant())")
