@@ -29,8 +29,7 @@ public class EventRegistrationEntity {
   @Column(name = "e_mail", nullable = false)
   private String email;
 
-  @Lob
-  @Column(name = "comment")
+  @Column(name = "comment", columnDefinition = "TEXT")
   private String comment;
 
   @NotNull

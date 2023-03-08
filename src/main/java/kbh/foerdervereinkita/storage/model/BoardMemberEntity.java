@@ -20,10 +20,9 @@ public class BoardMemberEntity {
   @Column(name = "image_filename", nullable = false)
   private String imageFilename;
 
-  @Lob
-  @Column(name = "introduction", nullable = false)
+  @Column(name = "introduction", nullable = false, columnDefinition = "TEXT")
   private String introduction;
 
   @Column(name = "rank", nullable = false)
-  private Byte rank;
+  private int rank;
 }
