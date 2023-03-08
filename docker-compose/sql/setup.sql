@@ -43,8 +43,9 @@ VALUES ('Nastassja Altholz', 'nastassjaA360dpi.jpg',
 
 CREATE TABLE IF NOT EXISTS `foerderverein`.`event_registrations`
 (
-    `id`        BIGINT       NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    `full_name` VARCHAR(255) NOT NULL,
-    `e_mail`    VARCHAR(255) NOT NULL UNIQUE,
-    `comment`   TEXT
+    `id`                     BIGINT       NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    `full_name`              VARCHAR(255) NOT NULL,
+    `e_mail`                 VARCHAR(255) NOT NULL UNIQUE,
+    `comment`                TEXT,
+    `registration_timestamp` TIMESTAMP    NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) DEFAULT CHARSET = utf8;

@@ -6,7 +6,9 @@ import kbh.foerdervereinkita.storage.model.EventRegistrationEntity;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
-@Mapper(componentModel = "spring")
+@Mapper(
+    componentModel = "spring",
+    imports = {java.time.LocalDateTime.class, java.time.ZoneId.class})
 public interface EventRegistrationMapper {
 
   @Mapping(target = "eMail", source = "EMail")
@@ -14,5 +16,8 @@ public interface EventRegistrationMapper {
 
   @Mapping(target = "id", ignore = true)
   @Mapping(target = "email", source = "eMail")
+  @Mapping(
+      target = "registrationTimestamp",
+      expression = "java(LocalDateTime.now().atZone(ZoneId.of(\"Europe/Paris\")).toInstant())")
   EventRegistrationEntity toEntity(EventRegistrationDto dto);
 }
