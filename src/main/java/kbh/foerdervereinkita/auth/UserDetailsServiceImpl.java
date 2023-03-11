@@ -1,5 +1,6 @@
 package kbh.foerdervereinkita.auth;
 
+import jakarta.transaction.Transactional;
 import kbh.foerdervereinkita.mapper.UserDetailsMapper;
 import kbh.foerdervereinkita.storage.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
@@ -16,6 +17,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
   private final UserDetailsMapper mapper;
 
   @Override
+  @Transactional
   public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 
     return repository
