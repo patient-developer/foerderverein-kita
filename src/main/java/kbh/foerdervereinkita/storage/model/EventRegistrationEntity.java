@@ -1,24 +1,38 @@
 package kbh.foerdervereinkita.storage.model;
 
 import jakarta.persistence.*;
-import java.io.Serializable;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
+import java.time.Instant;
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
 @Entity
-@IdClass(EventRegistrationPK.class)
-@Table(name = "event_registrations")
-public class EventRegistrationEntity implements Serializable {
+@Table(
+    name = "event_registrations",
+    indexes = {@Index(name = "e_mail", columnList = "e_mail", unique = true)})
+public class EventRegistrationEntity {
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  @Column(name = "id", nullable = false)
+  private Long id;
 
-  @Column(name = "full_name", nullable = false, columnDefinition = "VARCHAR(255)")
+  @Size(max = 255)
+  @NotNull
+  @Column(name = "full_name", nullable = false)
   private String fullName;
 
-  @Id
-  @Column(name = "e_mail", nullable = false, columnDefinition = "VARCHAR(255)", unique = true)
-  private String eMail;
+  @Size(max = 255)
+  @NotNull
+  @Column(name = "e_mail", nullable = false)
+  private String email;
 
   @Column(name = "comment", columnDefinition = "TEXT")
   private String comment;
+
+  @NotNull
+  @Column(name = "registration_timestamp", nullable = false)
+  private Instant registrationTimestamp;
 }

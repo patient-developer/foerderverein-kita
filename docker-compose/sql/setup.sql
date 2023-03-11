@@ -40,3 +40,12 @@ VALUES ('Nastassja Altholz', 'nastassjaA360dpi.jpg',
         1),
        ('David Weber', 'daveW360dpi.jpg', 'Meine Tochter Annabelle geht in die Bärenhöhle.', 2),
        ('Klaus Huthmacher', 'klausH360dpi.jpg', 'Mein Sohn Lennard geht in die Kükengruppe.', 3);
+
+CREATE TABLE IF NOT EXISTS `foerderverein`.`event_registrations`
+(
+    `id`                     BIGINT       NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    `full_name`              VARCHAR(255) NOT NULL,
+    `e_mail`                 VARCHAR(255) NOT NULL UNIQUE,
+    `comment`                TEXT,
+    `registration_timestamp` TIMESTAMP    NOT NULL DEFAULT CURRENT_TIMESTAMP
+) DEFAULT CHARSET = utf8;

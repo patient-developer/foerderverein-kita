@@ -15,7 +15,7 @@
                 <div class="card bg-success border-success">
                     <div class="card-body text-center">
                         <div class="card-header my-3" th:text="${boardMember.fullName()}"></div>
-                        <img src="#" th:src="@{'/images/' + ${boardMember.imageFilename()}}"
+                        <img src="#" th:src="@{'~/images/' + ${boardMember.imageFilename()}}"
                              class="rounded-circle card-img my-3"
                              alt="..."/>
                         <div class="card-text my-3" th:utext="${boardMember.introduction()}"></div>
