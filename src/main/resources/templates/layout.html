@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="en"
       xmlns:th="http://www.thymeleaf.org"
-      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -20,20 +21,29 @@
         </button>
         <div class="collapse navbar-collapse" id="navmenu">
             <ul class="navbar-nav ms-auto">
-                <li class="nav-item">
+                <li sec:authorize="!isAuthenticated()" class="nav-item">
                     <a href="#" th:href="@{/events}" class="nav-link">Veranstaltungen</a>
                 </li>
-                <li class="nav-item">
+                <li sec:authorize="!isAuthenticated()" class="nav-item">
                     <a href="#" th:href="@{/board}" class="nav-link">Vorstand</a>
                 </li>
-                <li class="nav-item">
+                <li sec:authorize="!isAuthenticated()" class="nav-item">
                     <a href="#" th:href="@{/support}" class="nav-link">Unterstützung</a>
                 </li>
-                <li class="nav-item">
+                <li sec:authorize="!isAuthenticated()" class="nav-item">
                     <a href="#" th:href="@{/privacy}" class="nav-link">Datenschutz</a>
                 </li>
-                <li class="nav-item">
+                <li sec:authorize="!isAuthenticated()" class="nav-item">
                     <a href="#" th:href="@{/imprint}" class="nav-link">Impressum</a>
+                </li>
+                <li sec:authorize="!isAuthenticated()" class="nav-item">
+                    <a href="#" th:href="@{/login}" class="nav-link">Login</a>
+                </li>
+                <li sec:authorize="isAuthenticated() and hasAnyAuthority('BOARD','ADMIN')" class="nav-item">
+                    <a href="#" th:href="@{/internal/event-registrations}" class="nav-link">Flohmarkt Anmeldungen</a>
+                </li>
+                <li sec:authorize="isAuthenticated()" class="nav-item">
+                    <a href="#" th:href="@{/logout}" class="nav-link">Logout</a>
                 </li>
             </ul>
         </div>

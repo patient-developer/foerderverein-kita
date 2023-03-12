@@ -35,6 +35,8 @@ public class SecurityConfiguration {
 
     return httpSecurity
         .authorizeHttpRequests()
+        .requestMatchers("/internal/event-registrations")
+        .hasAnyAuthority(UserRole.BOARD.name(), UserRole.ADMIN.name())
         .requestMatchers(
             "/",
             "/index",
@@ -50,9 +52,11 @@ public class SecurityConfiguration {
         .permitAll()
         .and()
         .formLogin()
+        .defaultSuccessUrl("/index", true)
         .permitAll()
         .and()
         .logout()
+        .logoutSuccessUrl("/index")
         .permitAll()
         .and()
         .build();

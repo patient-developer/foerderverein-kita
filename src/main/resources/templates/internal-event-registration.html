@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
+<head>
+    <title>Flohmarkt Anmeldungen</title>
+    <meta name="format-detection" content="telephone=no">
+</head>
+<body>
+<div layout:fragment="content">
+    <div class="container">
+        <div class="table-responsive">
+            <table class="table table-borderless">
+                <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>E-Mail</th>
+                    <th>Kommentar</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="eventRegistrationModel : ${eventRegistrationModels}">
+                    <td><span th:text="${eventRegistrationModel.fullName()}"></span></td>
+                    <td><span th:text="${eventRegistrationModel.email()}"></span></td>
+                    <td><span th:text="${eventRegistrationModel.comment()}"></span></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+</body>
+</html>

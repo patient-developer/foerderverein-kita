@@ -1,5 +1,6 @@
 package kbh.foerdervereinkita.service.impl;
 
+import java.util.Collection;
 import kbh.foerdervereinkita.dto.EventRegistrationDto;
 import kbh.foerdervereinkita.mapper.EventRegistrationMapper;
 import kbh.foerdervereinkita.service.EventRegistrationService;
@@ -25,5 +26,13 @@ public class EventRegistrationServiceImpl implements EventRegistrationService {
   @Override
   public boolean exists(String eMail) {
     return repository.existsByEmail(eMail);
+  }
+
+  @Override
+  public Collection<EventRegistrationDto> fetchAll() {
+
+    Collection<EventRegistrationEntity> entities = repository.findAll();
+
+    return entities.stream().map(mapper::toDto).toList();
   }
 }

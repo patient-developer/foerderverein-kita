@@ -1,8 +1,10 @@
 package kbh.foerdervereinkita.mvc.controller;
 
+import java.util.Collection;
 import kbh.foerdervereinkita.dto.EventRegistrationDto;
 import kbh.foerdervereinkita.mapper.EventRegistrationMapper;
 import kbh.foerdervereinkita.mvc.form.EventRegistrationForm;
+import kbh.foerdervereinkita.mvc.model.EventRegistrationModel;
 import kbh.foerdervereinkita.service.EventRegistrationService;
 import kbh.foerdervereinkita.validate.ValidationSequence;
 import lombok.RequiredArgsConstructor;
@@ -51,6 +53,19 @@ public class EventRegistrationController {
     redirectAttributes.addFlashAttribute("success", successMessage);
 
     return new ModelAndView(new RedirectView("/event-registrations", true));
+  }
+
+  @GetMapping(path = "/internal/event-registrations")
+  ModelAndView eventRegistrationAllGet(Model model) {
+
+    Collection<EventRegistrationDto> eventRegistrationDtos = service.fetchAll();
+
+    Collection<EventRegistrationModel> eventRegistrationModels =
+        eventRegistrationDtos.stream().map(mapper::toModel).toList();
+
+    model.addAttribute("eventRegistrationModels", eventRegistrationModels);
+
+    return new ModelAndView("internal-event-registration");
   }
 
   private String concatSuccessMessage(EventRegistrationForm form) {
