@@ -29,6 +29,7 @@ public class EventRegistrationController {
   ModelAndView eventRegistrationGet(Model model) {
 
     model.addAttribute("eventRegistrationForm", new EventRegistrationForm());
+    model.addAttribute("registrationVacanciesCount", service.registrationVacanciesCount());
 
     return new ModelAndView("event-registration");
   }
