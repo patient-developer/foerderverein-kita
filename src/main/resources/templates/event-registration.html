@@ -21,10 +21,16 @@
               th:text="'Es sind noch ' + ${registrationVacanciesCount} + ' Plätze frei'"></span>
     </div>
     <div class="container text-center my-4">
-        <p>Gebühr für 3 Meter Stand 10 EUR oder 7 EUR mit Kuchenspende
-            <br>Tische o.ä. müssen mitgebracht werden
-            <br>Aufbau voraussichtlich gegen 11 Uhr
-            <br>Bitte die Standgebühr im Voraus überweisen</p>
+        <p style="margin-top: 0px; margin-bottom: 0px"
+           th:text="'Gebühr für 3 Meter Stand 10 EUR oder 7 EUR mit Kuchenspende'"></p>
+        <p style="margin-top: 0px; margin-bottom: 0px" th:text="'Tische o.ä. müssen mitgebracht werden'"></p>
+        <p style="margin-top: 0px; margin-bottom: 0px" th:text="'Aufbau voraussichtlich gegen 11 Uhr'"></p>
+        <p style="margin-top: 0px; margin-bottom: 0px"
+           th:text="'Bitte die Standgebühr im Voraus überweisen (IBAN ' +${@config.getCashAccountIban()}+')'"></p>
+        <p style="margin-top: 0px; margin-bottom: 0px">Bei Rückfragen kontaktieren Sie uns gerne unter
+            <a class="link-dark" th:href="'mailto:'+ ${@config.getContactEMail()}"
+               th:text="${@config.getContactEMail()}"></a>
+        </p>
     </div>
     <div class="container">
         <div class="container text-center my-4">
