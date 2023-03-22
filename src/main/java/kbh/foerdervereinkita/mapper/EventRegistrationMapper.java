@@ -13,6 +13,7 @@ import org.mapstruct.Mapping;
 public interface EventRegistrationMapper {
 
   @Mapping(target = "eMail", expression = "java(form.getEMail().trim())")
+  @Mapping(target = "feeValuationDate", ignore = true)
   EventRegistrationDto toDto(EventRegistrationForm form);
 
   @Mapping(target = "id", ignore = true)
