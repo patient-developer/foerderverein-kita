@@ -53,7 +53,7 @@
                 <p th:if="${#fields.hasErrors('eMail')}" th:errors="*{eMail}" class="alert alert-warning my-2"></p>
             </div>
             <div class="my-2">
-                <input type="text" class="form-control" placeholder="Kommentar" th:field="*{comment}">
+                <textarea class="form-control" placeholder="Kommentar" rows="3" th:field="*{comment}"></textarea>
             </div>
             <div class="my-2">
                 <input type="submit" value="Anmelden">
