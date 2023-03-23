@@ -1,3 +1,6 @@
 package kbh.foerdervereinkita.dto;
 
-public record EventRegistrationDto(String fullName, String eMail, String comment) {}
+import java.time.LocalDate;
+
+public record EventRegistrationDto(
+    String fullName, String eMail, String comment, LocalDate feeValuationDate) {}
