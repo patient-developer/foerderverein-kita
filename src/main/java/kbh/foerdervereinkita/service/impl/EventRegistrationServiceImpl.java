@@ -1,7 +1,10 @@
 package kbh.foerdervereinkita.service.impl;
 
 import java.util.Collection;
+import java.util.concurrent.CompletableFuture;
+import kbh.foerdervereinkita.dto.EMailDto;
 import kbh.foerdervereinkita.dto.EventRegistrationDto;
+import kbh.foerdervereinkita.mapper.EMailMapper;
 import kbh.foerdervereinkita.mapper.EventRegistrationMapper;
 import kbh.foerdervereinkita.service.EMailService;
 import kbh.foerdervereinkita.service.EventRegistrationService;
@@ -15,7 +18,8 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class EventRegistrationServiceImpl implements EventRegistrationService {
   private final EventRegistrationRepository repository;
-  private final EventRegistrationMapper mapper;
+  private final EventRegistrationMapper eventRegistrationMapper;
+  private final EMailMapper eMailMapper;
 
   @Value("${MAX_REGISTRATION_COUNT}")
   private final long maxRegistrationsCount;
@@ -23,13 +27,21 @@ public class EventRegistrationServiceImpl implements EventRegistrationService {
   private final EMailService eMailService;
 
   @Override
-  public void register(EventRegistrationDto eventRegistrationDto) {
+  public void register(EventRegistrationDto eventRegistration) {
 
-    EventRegistrationEntity entity = mapper.toEntity(eventRegistrationDto);
+    EventRegistrationEntity entity = eventRegistrationMapper.toEntity(eventRegistration);
 
     repository.save(entity);
 
-    eMailService.sendMail();
+    CompletableFuture.runAsync(
+        () -> {
+          try {
+            EMailDto eMail = eMailMapper.toDto(eventRegistration);
+            eMailService.sendMail(eMail);
+          } catch (Exception e) {
+            System.out.println(e.getMessage());
+          }
+        });
   }
 
   @Override
@@ -42,7 +54,7 @@ public class EventRegistrationServiceImpl implements EventRegistrationService {
 
     Collection<EventRegistrationEntity> entities = repository.findAll();
 
-    return entities.stream().map(mapper::toDto).toList();
+    return entities.stream().map(eventRegistrationMapper::toDto).toList();
   }
 
   @Override

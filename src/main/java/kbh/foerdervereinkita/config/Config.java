@@ -34,6 +34,9 @@ public class Config {
   @Value("${CONTACT_E_MAIL}")
   private final String contactEMail;
 
+  @Value("${HOMEPAGE_URL}")
+  private final String homepageUrl;
+
   @Value("${REGISTER_NUMBER}")
   private final String registerNumber;
 }

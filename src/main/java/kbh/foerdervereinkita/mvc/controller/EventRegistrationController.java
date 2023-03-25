@@ -1,6 +1,7 @@
 package kbh.foerdervereinkita.mvc.controller;
 
 import java.util.Collection;
+import kbh.foerdervereinkita.config.Config;
 import kbh.foerdervereinkita.dto.EventRegistrationDto;
 import kbh.foerdervereinkita.mapper.EventRegistrationMapper;
 import kbh.foerdervereinkita.mvc.form.EventRegistrationForm;
@@ -22,6 +23,7 @@ import org.springframework.web.servlet.view.RedirectView;
 @Controller
 @RequiredArgsConstructor
 public class EventRegistrationController {
+  private final Config config;
   private final EventRegistrationService service;
   private final EventRegistrationMapper mapper;
 
@@ -71,10 +73,12 @@ public class EventRegistrationController {
 
   private String concatSuccessMessage(EventRegistrationForm form) {
 
-    return "Vielen Dank "
-        + form.getFullName()
-        + ". Sie haben sich mit Ihrer E-Mail "
-        + form.getEMail()
-        + " erfolgreich angemeledet.";
+    return """
+        Vielen Dank $fullName. Sie haben sich mit Ihrer E-Mail $eMail erfolgreich angemeldet.<br>
+        Sie sollten in Kürze eine Bestätigungs E-Mail erhalten.
+        """
+        .replace("$fullName", form.getFullName())
+        .replace("$eMail", form.getEMail())
+        .replace("$contactEMail", config.getContactEMail());
   }
 }
