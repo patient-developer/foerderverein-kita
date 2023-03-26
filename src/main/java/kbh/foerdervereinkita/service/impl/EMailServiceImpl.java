@@ -48,6 +48,8 @@ public class EMailServiceImpl implements EMailService {
           in der Turnhalle der Grundschule Sonnenfeld Homburg
         statt.
 
+        Beachten Sie, dass wir ausschließlich Stellplätze zur Verfügung stellen, d.h. Tische o.ä. müssen selbst mitgebracht werden.
+
         Aufbau ist ab 11 Uhr möglich.
 
         Bitte überweisen Sie die Standgebühr in Höhe von 10 EUR (7 EUR mit Kuchen) pro 3m Stand im Voraus auf unser Konto:
