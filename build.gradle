@@ -5,7 +5,7 @@ plugins {
 }
 
 group = 'kbh'
-version = '1.0.14'
+version = '1.0.15'
 sourceCompatibility = '17'
 
 repositories {
@@ -30,7 +30,7 @@ dependencies {
 	implementation 'org.webjars:bootstrap:5.2.3'
 	implementation 'org.webjars:webjars-locator:0.46'
 	implementation 'org.mariadb.jdbc:mariadb-java-client:3.1.2'
-
+	implementation 'com.sun.mail:jakarta.mail:2.0.1'
 
 	annotationProcessor 'org.mapstruct:mapstruct-processor:1.5.3.Final'
 	annotationProcessor 'org.projectlombok:lombok-mapstruct-binding:0.2.0'
