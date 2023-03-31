@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
+<head>
+    <title>Meine Anmeldung</title>
+</head>
+<body>
+<div layout:fragment="content">
+    <div class="container">
+        <div class="text-center my-2">
+            <span style="font-size: large;font-weight: bold" th:text="'Hallo ' + ${myFleaMarket.fullName()}"></span>
+        </div>
+        <div class="text-center my-2">
+            <span style="font-size: large">Schön, dass Sie an unserem Flohmarkt teilnehmen.</span>
+        </div>
+        <div th:if="${myFleaMarket.hasPaid()}" class="alert alert-info my-4 text-center">
+            <span style="font-size: large">Die Standgebühr ist überwiesen.</span>
+        </div>
+        <div th:unless="${myFleaMarket.hasPaid()}" class="alert alert-warning my-4 text-center">
+            Leider wurde die Standgebühr bisher nicht überwiesen.
+        </div>
+        <div th:if="${myFleaMarket.storingPositionNumber()}" class="alert alert-info my-4 text-center">
+            <span style="font-size: large"
+                  th:text="'Ihre Standnummer ist ' + ${myFleaMarket.storingPositionNumber()} + '.'"></span>
+        </div>
+        <div th:unless="${myFleaMarket.storingPositionNumber()}" class="alert alert-warning my-4 text-center">
+            <span>Ihre Standnummer ist noch nicht vergeben.</span>
+        </div>
+    </div>
+</div>
+</body>
+</html>

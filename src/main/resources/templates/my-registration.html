@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
+<head>
+    <title>Meine Anmeldung</title>
+</head>
+<body>
+<div layout:fragment="content">
+    <div class="container my-2">
+        <div class="text-center my-2">
+            <span style="font-size: large;font-weight: bold">Schauen Sie nach Ihrer Flohmarktanmeldung.</span>
+        </div>
+        <div class="text-center my-2">
+            <span>Einfach die E-Mail eingeben, mit der Sie sich registriert haben.</span>
+        </div>
+    </div>
+    <div class="container w-75 my-4">
+        <form action="#" style="..." th:action="@{/flohmarkt/meine-anmeldung}" th:method="POST"
+              th:object="${myRegistrationForm}">
+            <div class="my-2">
+                <input type="email" class="form-control" placeholder="E-Mail" th:field="*{email}">
+                <p th:if="${#fields.hasErrors('email')}" th:errors="*{email}"
+                   class="alert alert-warning my-2 text-center"></p>
+            </div>
+            <div class="my-4">
+                <input type="submit" value="Meine Anmeldung">
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+</html>
