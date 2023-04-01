@@ -41,7 +41,7 @@
         <div class="alert alert-info my-2 text-center" role="alert" th:if="${success}" th:utext="${success}"></div>
     </div>
     <div class="container">
-        <form action="#" style="..." th:action="@{/event-registrations}" th:method="POST"
+        <form action="#" style="..." th:action="@{/flohmarkt/anmeldung}" th:method="POST"
               th:object="${eventRegistrationForm}">
             <div class="my-2">
                 <input type="text" class="form-control" placeholder="Name" th:field="*{fullName}">

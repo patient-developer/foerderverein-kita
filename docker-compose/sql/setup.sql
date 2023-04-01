@@ -49,3 +49,11 @@ CREATE TABLE IF NOT EXISTS `foerderverein`.`event_registrations`
     `comment`                TEXT,
     `registration_timestamp` TIMESTAMP    NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) DEFAULT CHARSET = utf8;
+
+CREATE TABLE IF NOT EXISTS `foerderverein`.`storing_position`
+(
+    `id`                    INT    NOT NULL PRIMARY KEY,
+    `number`                INT    NOT NULL,
+    `event_registration_id` BIGINT NOT NULL,
+    CONSTRAINT `fk_storing_position_event_registration_id` FOREIGN KEY (`event_registration_id`) REFERENCES `foerderverein`.`event_registrations` (`id`)
+) DEFAULT CHARSET = utf8;

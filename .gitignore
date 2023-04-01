@@ -169,3 +169,6 @@ buildNumber.properties
 /src/main/resources/static/images
 
 /src/main/resources/application-prod.yml
+
+# env file
+.env

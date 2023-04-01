@@ -22,29 +22,39 @@ import org.springframework.web.servlet.view.RedirectView;
 
 @Controller
 @RequiredArgsConstructor
-public class EventRegistrationController {
+public class FleaMarketController {
   private final Config config;
   private final EventRegistrationService service;
   private final EventRegistrationMapper mapper;
 
+  @GetMapping(path = "/flohmarkt")
+  ModelAndView fleaMarketGet() {
+    return new ModelAndView("flea-market");
+  }
+
   @GetMapping(path = "/event-registrations")
-  ModelAndView eventRegistrationGet(Model model) {
+  RedirectView eventRegistrationGet() {
+    return new RedirectView("/flohmarkt/anmeldung", true);
+  }
+
+  @GetMapping(path = "/flohmarkt/anmeldung")
+  ModelAndView fleaMarketRegistrationGet(Model model) {
 
     model.addAttribute("eventRegistrationForm", new EventRegistrationForm());
     model.addAttribute("registrationVacanciesCount", service.registrationVacanciesCount());
 
-    return new ModelAndView("event-registration");
+    return new ModelAndView("flea-market-registration");
   }
 
-  @PostMapping(path = "/event-registrations")
-  ModelAndView eventRegistrationPost(
+  @PostMapping(path = "/flohmarkt/anmeldung")
+  ModelAndView fleaMarketRegistrationPost(
       @Validated(ValidationSequence.class) @ModelAttribute("eventRegistrationForm")
           EventRegistrationForm form,
       BindingResult bindingResult,
       RedirectAttributes redirectAttributes) {
 
     if (bindingResult.hasErrors()) {
-      return new ModelAndView("event-registration");
+      return new ModelAndView("flea-market-registration");
     }
 
     EventRegistrationDto eventRegistration = mapper.toDto(form);
@@ -55,7 +65,7 @@ public class EventRegistrationController {
 
     redirectAttributes.addFlashAttribute("success", successMessage);
 
-    return new ModelAndView(new RedirectView("/event-registrations", true));
+    return new ModelAndView(new RedirectView("/flohmarkt/anmeldung", true));
   }
 
   @GetMapping(path = "/internal/event-registrations")
