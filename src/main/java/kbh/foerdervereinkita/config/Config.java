@@ -37,6 +37,9 @@ public class Config {
   @Value("${HOMEPAGE_URL}")
   private final String homepageUrl;
 
+  @Value("${FLEA_MARKET_MY_REGISTRATION_URL}")
+  private final String fleaMarketMyRegistrationUrl;
+
   @Value("${REGISTER_NUMBER}")
   private final String registerNumber;
 }

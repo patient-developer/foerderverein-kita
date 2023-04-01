@@ -57,6 +57,9 @@ public class EMailServiceImpl implements EMailService {
         Empfänger  $associationName
         IBAN       $iban ($cashAccountCustodian)
 
+        Ob Ihre Standgebühr bei uns eingegangen ist oder wir Ihnen bereits eine Standnummer vergeben haben, können Sie jederzeit einsehen unter:
+        $fleaMarketMyRegistrationUrl
+
         Bei Rückfragen antworten Sie gerne einfach auf diese E-Mail.
 
         Herzliche Grüße,
@@ -73,7 +76,8 @@ public class EMailServiceImpl implements EMailService {
         .replace("$cashAccountCustodian", config.getCashAccountCustodian())
         .replace("$contactEMail", config.getContactEMail())
         .replace("$homepageUrl", config.getHomepageUrl())
-        .replace("$comment", resolveComment(comment));
+        .replace("$comment", resolveComment(comment))
+        .replace("$fleaMarketMyRegistrationUrl", config.getFleaMarketMyRegistrationUrl());
   }
 
   private String resolveComment(String comment) {
