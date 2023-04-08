@@ -43,17 +43,25 @@ VALUES ('Nastassja Altholz', 'nastassjaA360dpi.jpg',
 
 CREATE TABLE IF NOT EXISTS `foerderverein`.`event_registrations`
 (
-    `id`                     BIGINT       NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    `id`                     BIGINT PRIMARY KEY AUTO_INCREMENT,
     `full_name`              VARCHAR(255) NOT NULL,
     `e_mail`                 VARCHAR(255) NOT NULL UNIQUE,
     `comment`                TEXT,
     `registration_timestamp` TIMESTAMP    NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) DEFAULT CHARSET = utf8;
 
-CREATE TABLE IF NOT EXISTS `foerderverein`.`storing_position`
+CREATE TABLE IF NOT EXISTS `foerderverein`.`storing_positions`
 (
-    `id`                    INT    NOT NULL PRIMARY KEY,
-    `number`                INT    NOT NULL,
+    `id`                    BIGINT PRIMARY KEY AUTO_INCREMENT,
+    `bulky_goods`           TEXT,
     `event_registration_id` BIGINT NOT NULL,
     CONSTRAINT `fk_storing_position_event_registration_id` FOREIGN KEY (`event_registration_id`) REFERENCES `foerderverein`.`event_registrations` (`id`)
+) DEFAULT CHARSET = utf8;
+
+CREATE TABLE IF NOT EXISTS `foerderverein`.`storing_position_locations`
+(
+    `id`                  BIGINT PRIMARY KEY AUTO_INCREMENT,
+    `number`              INT UNIQUE,
+    `storing_position_id` BIGINT NOT NULL,
+    CONSTRAINT `fk_storing_position_location_storing_position_id` FOREIGN KEY (`storing_position_id`) REFERENCES `foerderverein`.`storing_positions` (`id`)
 ) DEFAULT CHARSET = utf8;

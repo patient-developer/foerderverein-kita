@@ -4,8 +4,12 @@ import kbh.foerdervereinkita.dto.EventRegistrationDto;
 import kbh.foerdervereinkita.mvc.form.EventRegistrationForm;
 import kbh.foerdervereinkita.mvc.model.EventRegistrationModel;
 import kbh.foerdervereinkita.storage.model.EventRegistrationEntity;
+import kbh.foerdervereinkita.storage.model.StoringPositionEntity;
+import kbh.foerdervereinkita.storage.model.StoringPositionLocationEntity;
+import org.mapstruct.AfterMapping;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
+import org.mapstruct.MappingTarget;
 
 @Mapper(
     componentModel = "spring",
@@ -28,4 +32,15 @@ public interface EventRegistrationMapper {
 
   @Mapping(target = "email", source = "eMail")
   EventRegistrationModel toModel(EventRegistrationDto dto);
+
+  @AfterMapping
+  default void setStoringPositionEntity(@MappingTarget EventRegistrationEntity entity) {
+
+    StoringPositionLocationEntity storingPositionLocation = new StoringPositionLocationEntity();
+
+    StoringPositionEntity storingPosition = new StoringPositionEntity();
+    storingPosition.addStoringPositionLocation(storingPositionLocation);
+
+    entity.setStoringPosition(storingPosition);
+  }
 }

@@ -16,7 +16,8 @@ import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
-public class EventRegistrationServiceImpl implements EventRegistrationService {
+class EventRegistrationServiceImpl implements EventRegistrationService {
+
   private final EventRegistrationRepository repository;
   private final EventRegistrationMapper eventRegistrationMapper;
   private final EMailMapper eMailMapper;

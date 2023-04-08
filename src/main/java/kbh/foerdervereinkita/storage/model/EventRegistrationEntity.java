@@ -15,6 +15,7 @@ import lombok.Setter;
     name = "event_registrations",
     indexes = {@Index(name = "e_mail", columnList = "e_mail", unique = true)})
 public class EventRegistrationEntity {
+
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   @Column(name = "id", nullable = false)
@@ -39,4 +40,13 @@ public class EventRegistrationEntity {
 
   @Column(name = "fee_valuation_date", columnDefinition = "DATE")
   private LocalDate feeValuationDate;
+
+  @PrimaryKeyJoinColumn
+  @OneToOne(mappedBy = "eventRegistration", cascade = CascadeType.PERSIST)
+  private StoringPositionEntity storingPosition;
+
+  public void setStoringPosition(StoringPositionEntity storingPosition) {
+    storingPosition.setEventRegistration(this);
+    this.storingPosition = storingPosition;
+  }
 }
