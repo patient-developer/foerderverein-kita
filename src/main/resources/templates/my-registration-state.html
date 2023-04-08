@@ -20,12 +20,21 @@
         <div th:unless="${myFleaMarket.hasPaid()}" class="alert alert-warning my-4 text-center">
             Leider wurde die Standgebühr bisher nicht überwiesen.
         </div>
-        <div th:if="${myFleaMarket.storingPositionNumber()}" class="alert alert-info my-4 text-center">
-            <span style="font-size: large"
-                  th:text="'Ihre Standnummer ist ' + ${myFleaMarket.storingPositionNumber()} + '.'"></span>
-        </div>
-        <div th:unless="${myFleaMarket.storingPositionNumber()}" class="alert alert-warning my-4 text-center">
+        <div th:if="${#lists.isEmpty(myFleaMarket.storingPositionLocationNumbers())}"
+             class="alert alert-warning my-4 text-center">
             <span>Ihre Standnummer ist noch nicht vergeben.</span>
+
+        </div>
+        <div th:if="${#lists.size(myFleaMarket.storingPositionLocationNumbers()) == 1}"
+             class="alert alert-info my-4 text-center">
+            <span style="font-size: large"
+                  th:text="'Ihre Standnumer ist ' + ${myFleaMarket.storingPositionLocationNumbers()[0]} + '.'"></span>
+
+        </div>
+        <div th:if="${#lists.size(myFleaMarket.storingPositionLocationNumbers()) > 1}"
+             class="alert alert-info my-4 text-center">
+            <span style="font-size: large"
+                  th:text="'Ihre Standnummern sind ' + ${#strings.listJoin(myFleaMarket.storingPositionLocationNumbers(), ', ')} + '.'"></span>
         </div>
     </div>
 </div>
