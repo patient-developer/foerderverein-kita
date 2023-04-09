@@ -11,7 +11,6 @@ import kbh.foerdervereinkita.service.EventRegistrationService;
 import kbh.foerdervereinkita.storage.model.EventRegistrationEntity;
 import kbh.foerdervereinkita.storage.repository.EventRegistrationRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -21,10 +20,6 @@ class EventRegistrationServiceImpl implements EventRegistrationService {
   private final EventRegistrationRepository repository;
   private final EventRegistrationMapper eventRegistrationMapper;
   private final EMailMapper eMailMapper;
-
-  @Value("${MAX_REGISTRATION_COUNT}")
-  private final long maxRegistrationsCount;
-
   private final EMailService eMailService;
 
   @Override
@@ -56,10 +51,5 @@ class EventRegistrationServiceImpl implements EventRegistrationService {
     Collection<EventRegistrationEntity> entities = repository.findAll();
 
     return entities.stream().map(eventRegistrationMapper::toDto).toList();
-  }
-
-  @Override
-  public long registrationVacanciesCount() {
-    return maxRegistrationsCount - repository.count();
   }
 }
