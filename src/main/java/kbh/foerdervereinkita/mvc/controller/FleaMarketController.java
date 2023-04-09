@@ -7,6 +7,7 @@ import kbh.foerdervereinkita.mapper.EventRegistrationMapper;
 import kbh.foerdervereinkita.mvc.form.EventRegistrationForm;
 import kbh.foerdervereinkita.mvc.model.EventRegistrationModel;
 import kbh.foerdervereinkita.service.EventRegistrationService;
+import kbh.foerdervereinkita.service.StoringPositionLocationService;
 import kbh.foerdervereinkita.validate.ValidationSequence;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -23,8 +24,10 @@ import org.springframework.web.servlet.view.RedirectView;
 @Controller
 @RequiredArgsConstructor
 public class FleaMarketController {
+
   private final Config config;
-  private final EventRegistrationService service;
+  private final EventRegistrationService eventRegistrationService;
+  private final StoringPositionLocationService storingPositionLocationService;
   private final EventRegistrationMapper mapper;
 
   @GetMapping(path = "/flohmarkt")
@@ -41,7 +44,8 @@ public class FleaMarketController {
   ModelAndView fleaMarketRegistrationGet(Model model) {
 
     model.addAttribute("eventRegistrationForm", new EventRegistrationForm());
-    model.addAttribute("registrationVacanciesCount", service.registrationVacanciesCount());
+    model.addAttribute(
+        "registrationVacanciesCount", storingPositionLocationService.vacanciesCount());
 
     return new ModelAndView("flea-market-registration");
   }
@@ -59,7 +63,7 @@ public class FleaMarketController {
 
     EventRegistrationDto eventRegistration = mapper.toDto(form);
 
-    service.register(eventRegistration);
+    eventRegistrationService.register(eventRegistration);
 
     String successMessage = concatSuccessMessage(form);
 
@@ -71,7 +75,7 @@ public class FleaMarketController {
   @GetMapping(path = "/internal/event-registrations")
   ModelAndView eventRegistrationAllGet(Model model) {
 
-    Collection<EventRegistrationDto> eventRegistrationDtos = service.fetchAll();
+    Collection<EventRegistrationDto> eventRegistrationDtos = eventRegistrationService.fetchAll();
 
     Collection<EventRegistrationModel> eventRegistrationModels =
         eventRegistrationDtos.stream().map(mapper::toModel).toList();

@@ -10,6 +10,4 @@ public interface EventRegistrationService {
   boolean exists(String eMail);
 
   Collection<EventRegistrationDto> fetchAll();
-
-  long registrationVacanciesCount();
 }
