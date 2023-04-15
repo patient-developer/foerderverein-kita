@@ -25,6 +25,7 @@ public interface EventRegistrationMapper {
   @Mapping(
       target = "registrationTimestamp",
       expression = "java(LocalDateTime.now().atZone(ZoneId.of(\"Europe/Paris\")).toInstant())")
+  @Mapping(target = "fee", ignore = true)
   EventRegistrationEntity toEntity(EventRegistrationDto dto);
 
   @Mapping(target = "eMail", source = "email")

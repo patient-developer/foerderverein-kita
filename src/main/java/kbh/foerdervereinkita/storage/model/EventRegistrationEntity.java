@@ -41,6 +41,9 @@ public class EventRegistrationEntity {
   @Column(name = "fee_valuation_date", columnDefinition = "DATE")
   private LocalDate feeValuationDate;
 
+  @Column(name = "fee", columnDefinition = "INTEGER UNSIGNED")
+  private Double fee;
+
   @PrimaryKeyJoinColumn
   @OneToOne(mappedBy = "eventRegistration", cascade = CascadeType.PERSIST)
   private StoringPositionEntity storingPosition;
