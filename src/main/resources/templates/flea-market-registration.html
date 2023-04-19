@@ -15,56 +15,69 @@
             <h4>Turnhalle der Grundschule Sonnenfeld Homburg</h4>
         </div>
     </div>
-    <div class="container text-center my-4">
-        <span class="border border-warning rounded-2 bg-warning px-3 py-2"
+    <div th:if="${registrationVacanciesCount} > 0">
+        <div class="text-center my-4">
+        <span th:if="${registrationVacanciesCount} > 1" class="border border-warning rounded-2 bg-warning px-3 py-2"
               style="font-size: large; color: black"
               th:text="'Es sind noch ' + ${registrationVacanciesCount} + ' Plätze frei'"></span>
-    </div>
-    <div class="container text-center my-4">
-        <p style="margin-top: 0px; margin-bottom: 0px"
-           th:text="'Gebühr für 3 Meter Stand 10 EUR oder 7 EUR mit Kuchenspende'"></p>
-        <p style="margin-top: 0px; margin-bottom: 0px" th:text="'Tische o.ä. müssen mitgebracht werden'"></p>
-        <p style="margin-top: 0px; margin-bottom: 0px" th:text="'Aufbau ab 11 Uhr möglich'"></p>
-        <p style="margin-top: 0px; margin-bottom: 0px"
-           th:text="'Bitte die Standgebühr im Voraus überweisen (IBAN ' +${@config.getCashAccountIban()}+')'"></p>
-        <p style="margin-top: 0px; margin-bottom: 0px">Bei Rückfragen kontaktieren Sie uns gerne unter
-            <a class="link-dark" th:href="'mailto:'+ ${@config.getContactEMail()}"
-               th:text="${@config.getContactEMail()}"></a>
-        </p>
-    </div>
-    <div class="container">
-        <div class="container text-center my-4">
-            <h4>Anmeldung</h4>
+            <span th:if="${registrationVacanciesCount} == 1"
+                  class="border border-warning rounded-2 bg-warning px-3 py-2"
+                  style="font-size: large; color: black"
+                  th:text="'Es ist noch ' + ${registrationVacanciesCount} + ' Platz frei'"></span>
+        </div>
+        <div class="text-center my-4">
+            <p style="margin-top: 0px; margin-bottom: 0px"
+               th:text="'Gebühr für 3 Meter Stand 10 EUR oder 7 EUR mit Kuchenspende'"></p>
+            <p style="margin-top: 0px; margin-bottom: 0px" th:text="'Tische o.ä. müssen mitgebracht werden'"></p>
+            <p style="margin-top: 0px; margin-bottom: 0px" th:text="'Aufbau ab 11 Uhr möglich'"></p>
+            <p style="margin-top: 0px; margin-bottom: 0px"
+               th:text="'Bitte die Standgebühr im Voraus überweisen (IBAN ' +${@config.getCashAccountIban()}+')'"></p>
+            <p style="margin-top: 0px; margin-bottom: 0px">Bei Rückfragen kontaktieren Sie uns gerne unter
+                <a class="link-dark" th:href="'mailto:'+ ${@config.getContactEMail()}"
+                   th:text="${@config.getContactEMail()}"></a>
+            </p>
+        </div>
+        <div>
+            <div class="text-center my-4">
+                <h4>Anmeldung</h4>
+            </div>
+        </div>
+        <div class="alert alert-info my-2 text-center" role="alert" th:if="${success}" th:utext="${success}"></div>
+        <div>
+            <form action="#" style="..." th:action="@{/flohmarkt/anmeldung}" th:method="POST"
+                  th:object="${eventRegistrationForm}">
+                <div class="my-2">
+                    <input type="text" class="form-control" placeholder="Name" th:field="*{fullName}">
+                    <p th:if="${#fields.hasErrors('fullName')}" th:errors="*{fullName}"
+                       class="alert alert-warning my-2"></p>
+                </div>
+                <div class="my-2">
+                    <input type="email" class="form-control" placeholder="E-Mail" th:field="*{eMail}">
+                    <p th:if="${#fields.hasErrors('eMail')}" th:errors="*{eMail}" class="alert alert-warning my-2"></p>
+                </div>
+                <div class="my-2">
+                    <textarea class="form-control" placeholder="Kommentar" rows="3" th:field="*{comment}"></textarea>
+                </div>
+                <div class="my-2">
+                    <input type="submit" value="Anmelden">
+                </div>
+            </form>
+        </div>
+        <div class="col-md align-items-center my-4 text-white">
+            <p>DSGVO Hinweis: Die erhobenen Daten dienen ausschließlich der Abwicklung des Flohmarkts und werden am Ende
+                der
+                Veranstaltung gelöscht.<br>Unsere allgemeinen DSGVO Bestimmungen finden Sie unter <a class="link-dark"
+                                                                                                     th:href="@{/privacy}">Datenschutzerklärung</a>.
+            </p>
         </div>
     </div>
-    <div class="container">
-        <div class="alert alert-info my-2 text-center" role="alert" th:if="${success}" th:utext="${success}"></div>
-    </div>
-    <div class="container">
-        <form action="#" style="..." th:action="@{/flohmarkt/anmeldung}" th:method="POST"
-              th:object="${eventRegistrationForm}">
-            <div class="my-2">
-                <input type="text" class="form-control" placeholder="Name" th:field="*{fullName}">
-                <p th:if="${#fields.hasErrors('fullName')}" th:errors="*{fullName}"
-                   class="alert alert-warning my-2"></p>
-            </div>
-            <div class="my-2">
-                <input type="email" class="form-control" placeholder="E-Mail" th:field="*{eMail}">
-                <p th:if="${#fields.hasErrors('eMail')}" th:errors="*{eMail}" class="alert alert-warning my-2"></p>
-            </div>
-            <div class="my-2">
-                <textarea class="form-control" placeholder="Kommentar" rows="3" th:field="*{comment}"></textarea>
-            </div>
-            <div class="my-2">
-                <input type="submit" value="Anmelden">
-            </div>
-        </form>
-    </div>
-    <div class="col-md align-items-center my-4 text-white">
-        <p>DSGVO Hinweis: Die erhobenen Daten dienen ausschließlich der Abwicklung des Flohmarkts und werden am Ende der
-            Veranstaltung gelöscht.<br>Unsere allgemeinen DSGVO Bestimmungen finden Sie unter <a class="link-dark"
-                                                                                                 th:href="@{/privacy}">Datenschutzerklärung</a>.
-        </p>
+    <div th:if="${registrationVacanciesCount} == 0">
+        <p class="text-center my-2" style="font-size: large">Leider sind alle Stellplätze vergeben</p>
+        <p class="text-center my-2" style="font-size: large">Schreiben Sie uns gerne eine E-Mail und wir informieren
+            Sie, falls ein Nachrückerplatz frei wird.</p>
+        <p class="text-center my-2" style="font-size: large"><a class="link-dark"
+                                                                th:href="'mailto:'+ ${@config.getContactEMail()}"
+                                                                th:text="${@config.getContactEMail()}"></a></p>
     </div>
 </div>
 </body>
