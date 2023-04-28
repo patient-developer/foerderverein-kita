@@ -1,11 +1,11 @@
 plugins {
-	id 'org.springframework.boot' version '3.0.4'
+	id 'org.springframework.boot' version '3.0.6'
 	id 'io.spring.dependency-management' version '1.1.0'
 	id 'java'
 }
 
 group = 'kbh'
-version = '1.0.22'
+version = '1.0.23'
 sourceCompatibility = '17'
 
 repositories {
@@ -13,14 +13,14 @@ repositories {
 }
 
 dependencies {
-	implementation 'org.springframework.boot:spring-boot-starter:3.0.4'
-	implementation 'org.springframework.boot:spring-boot-starter-data-jpa:3.0.4'
-	implementation 'org.springframework.boot:spring-boot-starter-web:3.0.4'
-	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf:3.0.4'
-	implementation 'org.springframework.boot:spring-boot-starter-security:3.0.4'
-	implementation 'org.springframework.boot:spring-boot-starter-validation:3.0.4'
-	implementation 'org.springframework.boot:spring-boot-devtools:3.0.4'
-	implementation 'org.springframework.boot:spring-boot-starter-mail:3.0.4'
+	implementation 'org.springframework.boot:spring-boot-starter:3.0.6'
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa:3.0.6'
+	implementation 'org.springframework.boot:spring-boot-starter-web:3.0.6'
+	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf:3.0.6'
+	implementation 'org.springframework.boot:spring-boot-starter-security:3.0.6'
+	implementation 'org.springframework.boot:spring-boot-starter-validation:3.0.6'
+	implementation 'org.springframework.boot:spring-boot-devtools:3.0.6'
+	implementation 'org.springframework.boot:spring-boot-starter-mail:3.0.6'
 
 	implementation 'nz.net.ultraq.thymeleaf:thymeleaf-layout-dialect:3.1.0'
 	implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity6:3.1.1.RELEASE'

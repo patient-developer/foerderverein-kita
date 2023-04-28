@@ -14,22 +14,16 @@
                 <img src="#" th:src="@{~/images/flohmarktPoster2023Web.jpeg}" class="w-50 rounded-2" alt="...">
             </div>
             <div class="col-md my-3">
-                <div class="row text-center my-4">
-                    <h3>1. Baby- und Kinderflohmarkt Homburg</h3>
-                    <h4>Samstag, den 22. April 2023</h4>
-                    <h4>von 13 - 16 Uhr</h4>
-                    <h4>Turnhalle der Grundschule Sonnenfeld Homburg</h4>
-                </div>
-                <div class="row justify-content-evenly align-items-center">
-                    <div class="col-md text-center">
-                        <button class="btn btn-info btn-lg my-2" style="width: 200px">
-                            <a class="link-dark fw-bold" th:href="@{/flohmarkt/anmeldung}">Anmelden</a>
-                        </button>
+                <div class="row">
+                    <div class="col-md text-center my-3">
+                        <span style="font-size: large;font-weight: bold;color: darkorange" th:text="'Schön wars'"></span>
                     </div>
-                    <div class="col-md text-center">
-                        <button class="btn btn-info btn-lg my-2" style="width: 200px">
-                            <a class="link-dark fw-bold" th:href="@{/flohmarkt/meine-anmeldung}">Meine Anmeldung</a>
-                        </button>
+                </div>
+                <div class="row">
+                    <div class="col-md text-center my-3">
+                        <a th:href="@{~/images/flohmark2023.jpg}">
+                            <img class="img-fluid w-75" th:src="@{~/images/flohmark2023_72dpi.jpg}" src="#" alt="...">
+                        </a>
                     </div>
                 </div>
             </div>
