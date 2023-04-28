@@ -25,6 +25,9 @@
                     <a href="#" th:href="@{/flohmarkt}" class="nav-link">Flohmarkt</a>
                 </li>
                 <li sec:authorize="!isAuthenticated()" class="nav-item">
+                    <a href="#" th:href="@{/kueken}" class="nav-link">Küken</a>
+                </li>
+                <li sec:authorize="!isAuthenticated()" class="nav-item">
                     <a href="#" th:href="@{/events}" class="nav-link">Veranstaltungen</a>
                 </li>
                 <li sec:authorize="!isAuthenticated()" class="nav-item">

@@ -44,6 +44,8 @@ public class SecurityConfiguration {
             "/sitemap-file",
             "/privacy",
             "/imprint",
+            "/kueken",
+            "/videos/**",
             "/events",
             "/board",
             "/webjars/**",
