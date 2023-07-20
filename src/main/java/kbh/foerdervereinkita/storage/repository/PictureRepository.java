@@ -6,5 +6,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface PictureRepository extends JpaRepository<PictureEntity, Long> {
 
-  Collection<PictureEntity> findAllByEventKey(String eventKey);
+  Collection<PictureEntity> findAllByEventKeyOrderByRank(String eventKey);
 }
