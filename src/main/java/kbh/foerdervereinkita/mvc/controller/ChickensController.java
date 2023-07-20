@@ -23,7 +23,7 @@ public class ChickensController {
   @GetMapping("/kueken")
   ModelAndView chicksGet(Model model) {
 
-    Collection<PictureEntity> entities = repository.findAllByEventKey(EVENT_KEY);
+    Collection<PictureEntity> entities = repository.findAllByEventKeyOrderByRank(EVENT_KEY);
 
     Collection<PictureModel> pictures = entities.stream().map(mapper::toModel).toList();
 
