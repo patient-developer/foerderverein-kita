@@ -45,11 +45,11 @@ public class SecurityConfiguration {
             "/privacy",
             "/imprint",
             "/kueken",
-            "/videos/**",
             "/events",
             "/board",
             "/webjars/**",
             "/images/**",
+            "/css/**",
             "/event-registrations",
             "/flohmarkt/**",
             "/error")

@@ -159,9 +159,6 @@ buildNumber.properties
 # "temporary" build files
 /target
 
-# images
-/src/main/resources/static/*
-
 # local application properties
 /src/main/resources/application-dev.yml
 
