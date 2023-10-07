@@ -1,0 +1,31 @@
+package kbh.foerdervereinkita.mvc.controller;
+
+import kbh.foerdervereinkita.commons.Views;
+import kbh.foerdervereinkita.service.ExtrasService;
+import lombok.RequiredArgsConstructor;
+import org.springframework.core.io.Resource;
+import org.springframework.http.MediaType;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
+
+@Controller
+@RequiredArgsConstructor
+@RequestMapping(path = "/extras")
+public class ExtrasController {
+
+  private final ExtrasService service;
+
+  @GetMapping
+  ModelAndView extrasGet() {
+    return new ModelAndView(Views.EXTRAS);
+  }
+
+  @ResponseBody
+  @GetMapping(path = "/flyer", produces = MediaType.APPLICATION_PDF_VALUE)
+  public Resource flyerGet() {
+    return service.getFlyer();
+  }
+}

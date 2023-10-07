@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
+<head>
+    <title>Material</title>
+    <meta name="format-detection" content="telephone=no">
+</head>
+<body>
+<div layout:fragment="content">
+    <div class="container">
+        <div class="text-center">
+            <h1>Material</h1>
+        </div>
+        <div>
+            <ul>
+                <li>
+                    <a class="link-dark" th:href="@{/extras/flyer}" th:text="Flyer"></a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
