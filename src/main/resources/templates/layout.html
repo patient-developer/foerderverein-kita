@@ -38,6 +38,9 @@
                     <a href="#" th:href="@{/support}" class="nav-link">Unterstützung</a>
                 </li>
                 <li sec:authorize="!isAuthenticated()" class="nav-item">
+                    <a href="#" th:href="@{/extras}" class="nav-link">Material</a>
+                </li>
+                <li sec:authorize="!isAuthenticated()" class="nav-item">
                     <a href="#" th:href="@{/privacy}" class="nav-link">Datenschutz</a>
                 </li>
                 <li sec:authorize="!isAuthenticated()" class="nav-item">

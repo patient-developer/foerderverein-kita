@@ -41,6 +41,7 @@ public class SecurityConfiguration {
             "/",
             "/index",
             "/support/**",
+            "/extras/**",
             "/sitemap-file",
             "/privacy",
             "/imprint",

@@ -11,5 +11,5 @@ public class Views {
   public static final String PRIVACY = "privacy";
   public static final String EVENTS = "events";
   public static final String SUPPORT = "support";
-  public static final String CHICKS = "chicks";
+  public static final String EXTRAS = "extras";
 }
