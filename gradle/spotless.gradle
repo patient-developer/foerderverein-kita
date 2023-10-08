@@ -1,0 +1,19 @@
+spotless {
+
+    java {
+        target 'src/*/java/**/*.java'
+        formatAnnotations()
+        removeUnusedImports()
+        googleJavaFormat()
+    }
+
+    json {
+        target 'src/test/resources/**/*.json'
+        gson().indentWithSpaces(2)
+    }
+    // TBD
+    //    yaml {
+    //        target 'src/main/resources/*.yml'
+    //        jackson()
+    //    }
+}

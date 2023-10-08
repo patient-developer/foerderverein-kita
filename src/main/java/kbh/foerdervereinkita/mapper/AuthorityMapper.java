@@ -1,13 +1,12 @@
 package kbh.foerdervereinkita.mapper;
 
+import java.util.Collection;
+import java.util.stream.Collectors;
 import kbh.foerdervereinkita.storage.model.RoleEntity;
 import org.mapstruct.Mapper;
 import org.mapstruct.Named;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
-
-import java.util.Collection;
-import java.util.stream.Collectors;
 
 @Mapper(componentModel = "spring")
 public abstract class AuthorityMapper {

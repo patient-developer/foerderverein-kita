@@ -1,12 +1,11 @@
 package kbh.foerdervereinkita.storage.model;
 
 import jakarta.persistence.*;
+import java.util.LinkedHashSet;
+import java.util.Set;
 import kbh.foerdervereinkita.auth.UserRole;
 import lombok.Getter;
 import lombok.Setter;
-
-import java.util.LinkedHashSet;
-import java.util.Set;
 
 @Getter
 @Setter
