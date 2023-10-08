@@ -1,9 +1,8 @@
 package kbh.foerdervereinkita.storage.repository;
 
+import java.util.Optional;
 import kbh.foerdervereinkita.storage.model.UserEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
-
-import java.util.Optional;
 
 public interface UserRepository extends JpaRepository<UserEntity, Long> {
 
