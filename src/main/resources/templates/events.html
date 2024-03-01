@@ -2,7 +2,7 @@
 <html lang="en"
       xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorate="~{layout}">
+      layout:decorate="~{layout}" xmlns="http://www.w3.org/1999/html">
 <head>
     <title>Veranstaltungen</title>
     <meta name="format-detection" content="telephone=no">
@@ -10,10 +10,58 @@
 <body>
 <div layout:fragment="content">
     <div class="container">
-        <div><h1 class="text-center my-3">Veranstaltungen</h1></div>
+        <div><h1 class="text-center my-3">Förderverein-Projekte</h1></div>
         <div><h2 class="text-center my-3">in der Kita Sonnenfeld</h2></div>
 
-        <div><h4 class="text-center my-4">Interkultureller Workshop mit Ramesch e.V.</h4></div>
+        <div>
+            <h4 class="text-center my-4" id="natur-mobil-2024">"Lernort Natur"-Mobil</h4>
+        </div>
+        <div class="col my-4">
+            <div class="row row-cols-2">
+                <div class="col col-8">
+                    <p style="text-align: left; font-size: large">
+                        <b>Datum</b> 16. April 2024
+                    </p>
+                </div>
+                <div class="col col-4">
+                    <p style="text-align: right; font-size: large">
+                        Quelle: <a target="_blank" href="https://www.jagdverband.de/lernort-natur-mobil">DJV</a>
+                    </p>
+                </div>
+            </div>
+            <div class="row row-cols-1 row-cols-md-2 align-items-center">
+                <div class="col col-lg-6 col-xl-9">
+                    <p style="text-align: justify">
+                        Das "Lernort Natur"-Mobil, das in einigen Bundesländern zum Beispiel auch Rollende Waldschule
+                        oder Erlebnisschule Wald & Wild heißt, ist inzwischen eine der bekanntesten Aktionen der
+                        Initiative "Lernort Natur". Ob Schulbesuch oder Stadtfest: Die farbenfroh gestalteten Kleinbusse
+                        und PKW-Anhänger finden schnell Aufmerksamkeit, ganz gleich, wo sie auftauchen.<br><br>
+                        Unter fachkundiger Betreuung eines Jägers / einer Jägerin lernen Ihre Schüler die heimische
+                        Fauna und Flora kennen. Das mitgebrachte Anschauungsmaterial unterstützt die theoretische
+                        Erarbeitung des Unterrichtsstoffes. Die Präparate dürfen nicht nur angeschaut, sondern auch
+                        angefasst werden – das unterstützt das "Begreifen" von Zusammenhängen in der Natur.
+                    </p>
+                </div>
+                <div class="col col-lg-6 col-xl-3">
+                    <a th:href="@{~/images/naturMobil.jpg}">
+                        <img class="img-fluid rounded" src="#" alt="..." th:src="@{~/images/naturMobil.jpg}">
+                    </a>
+                </div>
+            </div>
+        </div>
+
+
+        <div>
+            <h4 class="text-center my-4">Interkultureller Workshop mit Ramesch e.V.</h4>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <p style="text-align: left; font-size: large">
+                    <b>Datum</b> Voraussichtlich Q2/2024
+                </p>
+            </div>
+        </div>
 
         <div class="col text-center my-3">
             <a th:href="@{http://ramesch.de/}" target="_blank">
@@ -40,7 +88,10 @@
             </p>
         </div>
 
-        <div><h4 class="text-center my-4">Tanzen mit der Tanzschule Srutek</h4></div>
+        <div>
+            <h4 id="srutek-2024" class="text-center my-4">Tanzen mit der Tanzschule Srutek</h4>
+        </div>
+
         <div class="row row-cols-1 row-cols-md-1 row-cols-lg-2 align-items-center justify-content-evenly">
             <div class="col col-lg-9 col-xl-10">
                 <p style="text-align: justify">Für die Kindergartenkinder soll ein Tanzprojekt in Zusammenarbeit mit
