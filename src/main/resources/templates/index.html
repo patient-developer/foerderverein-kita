@@ -9,23 +9,43 @@
 <body>
 <div layout:fragment="content">
     <div class="container">
-        <div class="row text-center">
-            <div class="col-md align-items-center my-3">
+        <div class="row row-cols-1 row-cols-md-3 align-items-center justify-content-evenly">
+            <div class="col col-12 col-md-4 my-3 text-center">
                 <img class="img-fluid w-75" th:src="@{'~/images/' + ${associationEmblemFilename}}" src="#" alt="...">
             </div>
-            <div class="col-md align-items-center my-3">
-                <h1>Förderverein</h1>
-                <h4>Kindertagesstätte Sonnenfeld Homburg</h4>
-                <p class="lead my-4">Wir machen es möglich.</p>
-                <button class="btn btn-warning btn-lg">
-                    <a class="link-dark fw-bold" th:href="@{/support}">Mach mit!</a>
-                </button>
-                </br>
-                <button class="btn btn-info btn-lg my-4">
-                    <a class="link-dark fw-bold" th:href="@{/events}">Projekte</a>
-                </button>
+            <div class="col col-12 col-md-4 my-3">
+                <div class="row row-cols-1">
+                    <div class="col-12 text-center">
+                        <h1>Förderverein</h1>
+                    </div>
+                    <div class="col-12 text-center">
+                        <h4>Kindertagesstätte Sonnenfeld Homburg</h4>
+                    </div>
+                    <div class="col-12 text-center">
+                        <p class="lead my-4">Wir machen es möglich.</p>
+                    </div>
+                </div>
+                <div class="row row-cols-1 row-cols-lg-2 align-items-center justify-content-evenly">
+                    <div class="col col-12 col-lg-6 text-center">
+                        <button class="btn btn-warning btn-lg">
+                            <a class="link-dark fw-bold" th:href="@{/support}">Mach mit!</a>
+                        </button>
+                    </div>
+                    <div class="col col-12 col-lg-6 text-center">
+                        <button class="btn btn-info btn-lg my-4">
+                            <a class="link-dark fw-bold" th:href="@{/events}">Projekte</a>
+                        </button>
+                    </div>
+                </div>
+                <div class="row row-cols-1">
+                    <div class="col col-12 text-center">
+                        <a href="https://www.instagram.com/foerderverein_kita_sonnenfeld/">
+                            <i class="bi bi-instagram" style="color: gray; font-size: xx-large"></i>
+                        </a>
+                    </div>
+                </div>
             </div>
-            <div class="col-md align-items-center my-3">
+            <div class="col col-12 col-md-4 my-3 text-center">
                 <img class="img-fluid w-75" th:src="@{'~/images/' + ${kindergartenEmblemFilename}}" src="#" alt="...">
             </div>
         </div>
