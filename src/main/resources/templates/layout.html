@@ -50,8 +50,8 @@
                 <li sec:authorize="!isAuthenticated()" class="nav-item">
                     <a href="#" th:href="@{/login}" class="nav-link">Login</a>
                 </li>
-                <li sec:authorize="isAuthenticated() and hasAnyAuthority('BOARD','ADMIN')" class="nav-item">
-                    <a href="#" th:href="@{/internal/event-registrations}" class="nav-link">Flohmarkt Anmeldungen</a>
+                <li sec:authorize="isAuthenticated() and hasAuthority('ADMIN')" class="nav-item">
+                    <a href="#" th:href="@{/users}" class="nav-link">Benutzer</a>
                 </li>
                 <li sec:authorize="isAuthenticated()" class="nav-item">
                     <a href="#" th:href="@{/logout}" class="nav-link">Logout</a>
@@ -60,6 +60,11 @@
         </div>
     </div>
 </nav>
+<div class="container">
+    <div class="alert alert-warning my-4 text-center" role="alert" th:if="${warn}" th:text="${warn}"></div>
+    <div class="alert alert-success my-4 text-center" role="alert" th:if="${success}" th:text="${success}"></div>
+    <div class="alert alert-danger my-4 text-center" role="alert" th:if="${error}" th:text="${error}"></div>
+</div>
 <section class="p-4">
     <div layout:fragment="content">
     </div>

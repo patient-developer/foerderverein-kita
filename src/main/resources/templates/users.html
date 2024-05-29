@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}" xmlns="http://www.w3.org/1999/html">
+<head>
+    <title>Benutzer</title>
+    <meta name="format-detection" content="telephone=no">
+</head>
+<body>
+<div layout:fragment="content" class="container">
+    <form action="#" th:action="@{/users/new}" th:object="${userForm}" method="post">
+        <div class="row row-cols-1 row-cols-md-3 align-items-center justify-content-evenly">
+            <div class="col col-12 col-md-4 py-2 text-start">
+                <select class="form-control" th:field="*{authority}">
+                    <option th:each="authority : ${authorities}"
+                            th:value="${authority}"
+                            th:text="${authority.name()}"></option>
+                </select>
+            </div>
+            <div class="col col-12 col-md-4 py-2 text-center">
+                <input type="text" class="form-control" placeholder="Benutzername" th:field="*{name}">
+            </div>
+            <div class="col col-12 col-md-4 py-2 text-center">
+                <input type="password" class="form-control" placeholder="Passwort" th:field="*{password}">
+            </div>
+            <div class="col col-12 col-md-3 py-2">
+                <input type="submit" class="form-control" value="Hinzufügen">
+            </div>
+            <div class="col col-md-9"></div>
+        </div>
+    </form>
+</div>
+</body>
