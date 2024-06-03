@@ -1,32 +1,39 @@
 package kbh.foerdervereinkita.storage.model;
 
 import jakarta.persistence.*;
-import java.util.Collection;
 import java.util.HashSet;
+import java.util.Set;
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
 @Entity
-@Table(
-    name = "users",
-    indexes = {@Index(name = "uc_users_username", columnList = "username", unique = true)})
+@Table(name = "users")
 public class UserEntity {
+
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  @Column(name = "id", nullable = false)
+  @Column(name = "id")
   private Long id;
 
-  @Column(name = "username", nullable = false)
-  private String username;
+  @Column(name = "name")
+  private String name;
 
-  @Column(name = "password", nullable = false)
+  @Column(name = "password")
   private String password;
 
-  @ManyToMany
-  @JoinTable(
-      joinColumns = @JoinColumn(name = "user_id"),
-      inverseJoinColumns = @JoinColumn(name = "role_id"))
-  private Collection<RoleEntity> roles = new HashSet<>();
+  @Column(name = "is_enabled")
+  private boolean enabled;
+
+  @OneToMany(
+          cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE},
+          mappedBy = "user",
+          orphanRemoval = true)
+  private Set<UserAuthorityEntity> userAuthorities = new HashSet<>();
+
+  public void addUserAuthority(UserAuthorityEntity userAuthority) {
+    this.userAuthorities.add(userAuthority);
+    userAuthority.setUser(this);
+  }
 }

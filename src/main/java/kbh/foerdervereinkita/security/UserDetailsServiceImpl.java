@@ -1,7 +1,7 @@
-package kbh.foerdervereinkita.auth;
+package kbh.foerdervereinkita.security;
 
 import jakarta.transaction.Transactional;
-import kbh.foerdervereinkita.mapper.UserDetailsMapper;
+import kbh.foerdervereinkita.storage.model.UserEntity;
 import kbh.foerdervereinkita.storage.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -20,9 +20,14 @@ public class UserDetailsServiceImpl implements UserDetailsService {
   @Transactional
   public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 
-    return repository
-        .findByUsername(username)
-        .map(mapper::toUserDetailsImpl)
-        .orElseThrow(() -> new UsernameNotFoundException(username));
+    UserEntity entity =
+            repository
+                    .findUserEntityByName(username)
+                    .orElseThrow(
+                            () ->
+                                    new UsernameNotFoundException(
+                                            String.format("Failed to find user with name '%s'.", username)));
+
+    return mapper.toImpl(entity);
   }
 }
