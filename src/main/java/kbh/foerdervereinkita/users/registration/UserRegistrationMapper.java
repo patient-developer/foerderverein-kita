@@ -21,7 +21,7 @@ public abstract class UserRegistrationMapper {
 
   @Mapping(target = "id", expression = "java(null)")
   @Mapping(target = "name", expression = "java(form.getName().strip())")
-  @Mapping(target = "password", expression = "java(encoder.encode(form.getPassword().strip()))")
+  @Mapping(target = "password", expression = "java(form.getPassword().strip())")
   @Mapping(target = "authority", source = "authority")
   @Mapping(target = "enabled", expression = "java(true)")
   abstract UserDTO toDTO(UserForm form);
