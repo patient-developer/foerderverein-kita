@@ -17,7 +17,8 @@ public class SecurityConfiguration {
     return httpSecurity
             .authorizeHttpRequests(
                     auth ->
-                            auth.requestMatchers("/", "/login", "/error", "/webjars/**", "/images/**")
+                            auth.requestMatchers(
+                                            "/", "/login", "/error", "/webjars/**", "/images/**", "/css/**")
                                     .permitAll()
                                     .requestMatchers("/users/**")
                                     .hasAuthority(Authority.ADMIN.name())
