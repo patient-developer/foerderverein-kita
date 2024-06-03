@@ -18,7 +18,22 @@ public class SecurityConfiguration {
             .authorizeHttpRequests(
                     auth ->
                             auth.requestMatchers(
-                                            "/", "/login", "/error", "/webjars/**", "/images/**", "/css/**")
+                                            "/",
+                                            "/index",
+                                            "/support/**",
+                                            "/extras/**",
+                                            "/privacy",
+                                            "/imprint",
+                                            "/kueken",
+                                            "/events",
+                                            "/flohmarkt/**",
+                                            "/board",
+                                            "/login",
+                                            "/error",
+                                            "/webjars/**",
+                                            "/images/**",
+                                            "/css/**",
+                                            "/sitemap-file")
                                     .permitAll()
                                     .requestMatchers("/users/**")
                                     .hasAuthority(Authority.ADMIN.name())
