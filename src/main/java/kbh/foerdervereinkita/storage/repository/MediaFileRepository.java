@@ -1,0 +1,9 @@
+package kbh.foerdervereinkita.storage.repository;
+
+import kbh.foerdervereinkita.storage.model.MediaFileEntity;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface MediaFileRepository extends JpaRepository<MediaFileEntity, Long> {
+
+    boolean existsByFileName(String fileName);
+}

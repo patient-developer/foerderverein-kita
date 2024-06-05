@@ -3,6 +3,9 @@ server:
   servlet:
     context-path: ${SERVER_CONTEXT_PATH:}
 spring:
+  servlet:
+    multipart:
+      max-file-size: 10MB
   mvc:
     hiddenmethod:
       filter:
