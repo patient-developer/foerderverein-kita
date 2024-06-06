@@ -55,7 +55,7 @@
                 </li>
                 <li sec:authorize="isAuthenticated() and hasAnyAuthority('ADMIN', 'BOARD', 'CHILDCARE_WORKER')"
                     class="nav-item">
-                    <a href="#" th:href="@{/media}" class="nav-link">Media</a>
+                    <a href="#" th:href="@{/media}" class="nav-link">Bilder</a>
                 </li>
                 <li sec:authorize="isAuthenticated()" class="nav-item">
                     <a href="#" th:href="@{/logout}" class="nav-link">Logout</a>

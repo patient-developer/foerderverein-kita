@@ -5,5 +5,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface MediaFileRepository extends JpaRepository<MediaFileEntity, Long> {
 
-    boolean existsByFileName(String fileName);
+  MediaFileEntity findById(long id);
+
+  boolean existsByFileName(String fileName);
 }
