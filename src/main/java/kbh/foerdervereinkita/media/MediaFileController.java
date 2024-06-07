@@ -44,7 +44,7 @@ public class MediaFileController {
 
   @PostMapping
   ModelAndView mediaPost(
-          @RequestParam("mediaFile") MultipartFile file, RedirectAttributes attributes) {
+      @RequestParam("mediaFile") MultipartFile file, RedirectAttributes attributes) {
     service.persist(file);
     attributes.addFlashAttribute(MessageType.SUCCESS, uploadSuccessMessage(file));
     return new ModelAndView(new RedirectView("/media", true));

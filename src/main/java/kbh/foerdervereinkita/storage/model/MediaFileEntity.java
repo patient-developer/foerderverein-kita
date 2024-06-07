@@ -10,11 +10,11 @@ import lombok.Setter;
 @Table(name = "media_files")
 public class MediaFileEntity {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false)
-    private Long id;
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  @Column(name = "id", nullable = false)
+  private Long id;
 
-    @Column(name = "file_name", nullable = false, unique = true)
-    private String fileName;
+  @Column(name = "file_name", nullable = false, unique = true)
+  private String fileName;
 }

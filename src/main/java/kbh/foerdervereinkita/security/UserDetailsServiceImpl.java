@@ -21,12 +21,12 @@ public class UserDetailsServiceImpl implements UserDetailsService {
   public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 
     UserEntity entity =
-            repository
-                    .findUserEntityByName(username)
-                    .orElseThrow(
-                            () ->
-                                    new UsernameNotFoundException(
-                                            String.format("Failed to find user with name '%s'.", username)));
+        repository
+            .findUserEntityByName(username)
+            .orElseThrow(
+                () ->
+                    new UsernameNotFoundException(
+                        String.format("Failed to find user with name '%s'.", username)));
 
     return mapper.toImpl(entity);
   }

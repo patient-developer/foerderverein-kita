@@ -5,5 +5,4 @@ import lombok.Builder;
 
 @Builder
 public record UserDTO(
-        Long id, String name, String password, Authority authority, boolean enabled) {
-}
+    Long id, String name, String password, Authority authority, boolean enabled) {}

@@ -28,12 +28,12 @@ public class AdminInitializer {
     }
 
     var user =
-            UserDTO.builder()
-                    .name(adminConfig.getName())
-                    .password(adminConfig.getPassword())
-                    .authority(ADMIN)
-                    .enabled(true)
-                    .build();
+        UserDTO.builder()
+            .name(adminConfig.getName())
+            .password(adminConfig.getPassword())
+            .authority(ADMIN)
+            .enabled(true)
+            .build();
 
     try {
       service.newUserAccount(user);
