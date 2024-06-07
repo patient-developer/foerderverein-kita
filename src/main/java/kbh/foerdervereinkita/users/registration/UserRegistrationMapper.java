@@ -11,13 +11,12 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 @Mapper(
-        componentModel = "spring",
-        unmappedTargetPolicy = ReportingPolicy.ERROR,
-        imports = {Authority.class, Set.class, SimpleGrantedAuthority.class})
+    componentModel = "spring",
+    unmappedTargetPolicy = ReportingPolicy.ERROR,
+    imports = {Authority.class, Set.class, SimpleGrantedAuthority.class})
 public abstract class UserRegistrationMapper {
 
-  @Autowired
-  protected PasswordEncoder encoder;
+  @Autowired protected PasswordEncoder encoder;
 
   @Mapping(target = "id", expression = "java(null)")
   @Mapping(target = "name", expression = "java(form.getName().strip())")

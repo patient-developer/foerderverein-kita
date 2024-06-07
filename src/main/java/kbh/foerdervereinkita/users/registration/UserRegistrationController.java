@@ -32,8 +32,8 @@ public class UserRegistrationController {
 
   @PostMapping("/new")
   ModelAndView usersNewPost(
-          @ModelAttribute("userForm") UserForm userForm, RedirectAttributes attributes)
-          throws UserException {
+      @ModelAttribute("userForm") UserForm userForm, RedirectAttributes attributes)
+      throws UserException {
 
     var user = mapper.toDTO(userForm);
 
@@ -54,7 +54,7 @@ public class UserRegistrationController {
 
   private static String successMessage(UserForm userForm) {
     return String.format(
-            "Successfully created new user account '%s' with authority '%s'.",
-            userForm.getName(), userForm.getAuthority());
+        "Successfully created new user account '%s' with authority '%s'.",
+        userForm.getName(), userForm.getAuthority());
   }
 }

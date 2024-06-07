@@ -15,36 +15,36 @@ public class SecurityConfiguration {
   public SecurityFilterChain filterChain(HttpSecurity httpSecurity) throws Exception {
 
     return httpSecurity
-            .authorizeHttpRequests(
-                    auth ->
-                            auth.requestMatchers(
-                                            "/",
-                                            "/index",
-                                            "/support/**",
-                                            "/extras/**",
-                                            "/privacy",
-                                            "/imprint",
-                                            "/kueken",
-                                            "/events",
-                                            "/flohmarkt/**",
-                                            "/board",
-                                            "/login",
-                                            "/error",
-                                            "/webjars/**",
-                                            "/images/**",
-                                            "/css/**",
-                                            "/sitemap-file")
-                                    .permitAll()
-                                    .requestMatchers("/users/**")
-                                    .hasAuthority(Authority.ADMIN.name())
-                                    .requestMatchers("/media/**")
-                                    .hasAnyAuthority(
-                                            Authority.ADMIN.name(),
-                                            Authority.BOARD.name(),
-                                            Authority.CHILDCARE_WORKER.name()))
-            .formLogin(login -> login.defaultSuccessUrl("/", true).permitAll())
-            .logout(logout -> logout.logoutSuccessUrl("/").permitAll())
-            .build();
+        .authorizeHttpRequests(
+            auth ->
+                auth.requestMatchers(
+                        "/",
+                        "/index",
+                        "/support/**",
+                        "/extras/**",
+                        "/privacy",
+                        "/imprint",
+                        "/kueken",
+                        "/events",
+                        "/flohmarkt/**",
+                        "/board",
+                        "/login",
+                        "/error",
+                        "/webjars/**",
+                        "/images/**",
+                        "/css/**",
+                        "/sitemap-file")
+                    .permitAll()
+                    .requestMatchers("/users/**")
+                    .hasAuthority(Authority.ADMIN.name())
+                    .requestMatchers("/media/**")
+                    .hasAnyAuthority(
+                        Authority.ADMIN.name(),
+                        Authority.BOARD.name(),
+                        Authority.CHILDCARE_WORKER.name()))
+        .formLogin(login -> login.defaultSuccessUrl("/", true).permitAll())
+        .logout(logout -> logout.logoutSuccessUrl("/").permitAll())
+        .build();
   }
 
   @Bean

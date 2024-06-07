@@ -27,9 +27,9 @@ public class UserEntity {
   private boolean enabled;
 
   @OneToMany(
-          cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE},
-          mappedBy = "user",
-          orphanRemoval = true)
+      cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE},
+      mappedBy = "user",
+      orphanRemoval = true)
   private Set<UserAuthorityEntity> userAuthorities = new HashSet<>();
 
   public void addUserAuthority(UserAuthorityEntity userAuthority) {

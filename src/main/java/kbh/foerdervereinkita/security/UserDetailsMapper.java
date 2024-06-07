@@ -22,10 +22,10 @@ public interface UserDetailsMapper {
 
   @Named("toAuthorities")
   default Collection<? extends GrantedAuthority> toAuthorities(
-          Set<UserAuthorityEntity> userAuthorities) {
+      Set<UserAuthorityEntity> userAuthorities) {
 
     return userAuthorities.stream()
-            .map(authority -> new SimpleGrantedAuthority(authority.getAuthority().name()))
-            .toList();
+        .map(authority -> new SimpleGrantedAuthority(authority.getAuthority().name()))
+        .toList();
   }
 }

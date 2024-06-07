@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}" xmlns="http://www.w3.org/1999/html">
+<head>
+    <title>Media</title>
+    <meta name="format-detection" content="telephone=no">
+</head>
+<body>
+<div layout:fragment="content" class="container">
+    <div class="py-2">
+        <form method="post" enctype="multipart/form-data" th:action="@{/media}">
+            <div class="row row-cols-1 row-cols-md-2 align-items-center justify-content-evenly">
+                <div class="col col-12 col-md-8 py-2">
+                    <input type="file" name="mediaFile" accept="multipart/form-data" class="form-control">
+                </div>
+                <div class="col col-12 col-md-4 py-2">
+                    <input type="submit" class="form-control" value="Hochladen">
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="py-2" th:each="mediaFile : ${mediaFiles}">
+        <div class="row row-cols-2 align-items-center justify-content-evenly">
+            <div class="col col-8 text-start">
+                <a class="link-dark" th:text="${mediaFile.fileName()}"
+                   th:href="@{/media/{id} (id=${mediaFile.id()})}"></a>
+            </div>
+            <div class="col col-2 text-center">
+                <a th:href="@{/media/delete/{id} (id=${mediaFile.id()})}">
+                    <span><i class="bi bi-trash" style="font-size: x-large"></i></span>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
