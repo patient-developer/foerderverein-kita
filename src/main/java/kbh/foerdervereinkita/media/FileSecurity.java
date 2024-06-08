@@ -1,6 +1,5 @@
 package kbh.foerdervereinkita.media;
 
-import java.nio.file.Path;
 import java.security.InvalidKeyException;
 import java.security.Key;
 import java.security.NoSuchAlgorithmException;
@@ -22,12 +21,12 @@ public class FileSecurity {
 
   public FileSecurity(
       @Value("${CRYPT_KEY}") String cryptKey,
-      @Value("${CRYPT_ALGORITHM}") String cryptAlgorithm,
-      @Value("${CRYPT_MODE}") String cryptMode)
+      @Value("${CRYPT_ALGORITHM}") String algorithm,
+      @Value("${CRYPT_TRANSFORMATION}") String transformation)
       throws NoSuchPaddingException, NoSuchAlgorithmException {
 
-    this.secretKey = new SecretKeySpec(cryptKey.getBytes(), cryptAlgorithm);
-    this.cipher = Cipher.getInstance(cryptMode);
+      this.secretKey = new SecretKeySpec(cryptKey.getBytes(), algorithm);
+      this.cipher = Cipher.getInstance(transformation);
   }
 
   public byte[] encrypt(byte[] bytes)
@@ -40,9 +39,5 @@ public class FileSecurity {
       throws InvalidKeyException, IllegalBlockSizeException, BadPaddingException {
     cipher.init(Cipher.DECRYPT_MODE, secretKey);
     return cipher.doFinal(bytes);
-  }
-
-  public static Path encryptedFileName(Path path) {
-    return path.getParent().resolve(path.getFileName() + ENC_SUFFIX);
   }
 }

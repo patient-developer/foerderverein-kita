@@ -1,6 +1,7 @@
 package kbh.foerdervereinkita.media;
 
 import kbh.foerdervereinkita.constants.MessageType;
+import kbh.foerdervereinkita.media.exception.MediaFileException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.core.io.Resource;
@@ -50,12 +51,20 @@ public class MediaFileController {
     return new ModelAndView(new RedirectView("/media", true));
   }
 
-  @ExceptionHandler(Exception.class)
-  public ModelAndView handleException(Exception exception, RedirectAttributes attributes) {
+    @ExceptionHandler(MediaFileException.class)
+    public ModelAndView handleMediaFileException(
+            MediaFileException exception, RedirectAttributes attributes) {
     log.error(exception.getMessage(), exception);
     attributes.addFlashAttribute(MessageType.ERROR, exception.getMessage());
     return new ModelAndView(new RedirectView("/media", true));
   }
+
+    @ExceptionHandler(Exception.class)
+    public ModelAndView handleException(Exception exception, RedirectAttributes attributes) {
+        log.error(exception.getMessage(), exception);
+        attributes.addFlashAttribute(MessageType.ERROR, "Ups, da ist was schief gegangen.");
+        return new ModelAndView(new RedirectView("/media", true));
+    }
 
   private static String uploadSuccessMessage(MultipartFile file) {
     return String.format("Datei '%s' erfolgreich hochgeladen.", file.getOriginalFilename());

@@ -1,6 +1,5 @@
 package kbh.foerdervereinkita.media;
 
-import jakarta.transaction.Transactional;
 import java.io.IOException;
 import java.security.InvalidKeyException;
 import java.util.List;
@@ -19,7 +18,7 @@ public class MediaFileService {
 
   private final MediaFileRepository repository;
   private final MediaFileMapper mapper;
-  private final FileStorage fileStorage;
+  private final FileSecurity fileSecurity;
 
   public List<MediaFileDTO> fetchAll() {
     return repository.findAll().stream().map(mapper::toDTO).toList();
@@ -28,44 +27,32 @@ public class MediaFileService {
   public Resource fetch(long id) {
     var entity = repository.findById(id);
     try {
-      return fileStorage.load(entity.getFileName());
-    } catch (IOException
-        | IllegalBlockSizeException
-        | BadPaddingException
-        | InvalidKeyException e) {
+      return mapper.toResource(entity);
+    } catch (IllegalBlockSizeException | InvalidKeyException | BadPaddingException e) {
       throw MediaFileException.loadFailure(entity.getFileName(), e);
     }
   }
 
-  @Transactional
   public void persist(MultipartFile file) {
 
     if (repository.existsByFileName(file.getOriginalFilename())) {
       throw MediaFileException.alreadyExists(file.getOriginalFilename());
     }
 
-    var entity = mapper.toEntity(file);
-    repository.save(entity);
-
     try {
-      fileStorage.persist(file.getBytes(), file.getOriginalFilename());
-    } catch (IOException
-        | InvalidKeyException
-        | IllegalBlockSizeException
-        | BadPaddingException e) {
+      var entity = mapper.toEntity(file);
+      repository.save(entity);
+    } catch (IllegalBlockSizeException
+             | BadPaddingException
+             | IOException
+             | InvalidKeyException e) {
       throw MediaFileException.writeFailure(file.getOriginalFilename(), e);
     }
   }
 
-  @Transactional
   public String remove(long id) {
     var entity = repository.findById(id);
     repository.delete(entity);
-    try {
-      fileStorage.remove(entity.getFileName());
-      return entity.getFileName();
-    } catch (IOException e) {
-      throw MediaFileException.deleteFailure(entity.getFileName(), e);
-    }
+    return entity.getFileName();
   }
 }
