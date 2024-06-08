@@ -25,8 +25,8 @@ public class FileSecurity {
       @Value("${CRYPT_TRANSFORMATION}") String transformation)
       throws NoSuchPaddingException, NoSuchAlgorithmException {
 
-      this.secretKey = new SecretKeySpec(cryptKey.getBytes(), algorithm);
-      this.cipher = Cipher.getInstance(transformation);
+    this.secretKey = new SecretKeySpec(cryptKey.getBytes(), algorithm);
+    this.cipher = Cipher.getInstance(transformation);
   }
 
   public byte[] encrypt(byte[] bytes)
