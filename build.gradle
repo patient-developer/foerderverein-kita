@@ -8,7 +8,7 @@ plugins {
 apply from: 'gradle/spotless.gradle'
 
 group = 'kbh'
-version = '1.5.1'
+version = '1.6.0'
 
 java {
     sourceCompatibility = '21'
@@ -40,9 +40,6 @@ dependencyManagement {
         dependencySet(group: 'org.mapstruct', version: '1.5.5.Final') {
             entry 'mapstruct'
             entry 'mapstruct-processor'
-        }
-        dependencySet(group: 'org.liquibase', version: '4.28.0') {
-            entry 'liquibase-core'
         }
     }
 }
