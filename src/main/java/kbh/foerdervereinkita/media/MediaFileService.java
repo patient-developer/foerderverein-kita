@@ -21,7 +21,7 @@ public class MediaFileService {
   private final FileSecurity fileSecurity;
 
   public List<MediaFileDTO> fetchAll() {
-    return repository.findAll().stream().map(mapper::toDTO).toList();
+    return repository.findAllProjectedBy().stream().map(mapper::toDTO).toList();
   }
 
   public Resource fetch(long id) {
