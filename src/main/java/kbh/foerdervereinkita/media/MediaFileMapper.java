@@ -5,6 +5,7 @@ import java.security.InvalidKeyException;
 import javax.crypto.BadPaddingException;
 import javax.crypto.IllegalBlockSizeException;
 import kbh.foerdervereinkita.storage.model.MediaFileEntity;
+import kbh.foerdervereinkita.storage.model.MediaFileProjection;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.ReportingPolicy;
@@ -21,7 +22,7 @@ public abstract class MediaFileMapper {
 
   @Mapping(target = "id", source = "id")
   @Mapping(target = "fileName", source = "fileName")
-  abstract MediaFileDTO toDTO(MediaFileEntity entity);
+  abstract MediaFileDTO toDTO(MediaFileProjection projection);
 
   @Mapping(target = "id", ignore = true)
   @Mapping(target = "fileName", expression = "java(file.getOriginalFilename())")
