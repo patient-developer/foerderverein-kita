@@ -12,7 +12,6 @@ import org.mapstruct.ReportingPolicy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ByteArrayResource;
 import org.springframework.core.io.Resource;
-import org.springframework.web.multipart.MultipartFile;
 
 @Mapper(componentModel = "spring", unmappedTargetPolicy = ReportingPolicy.ERROR)
 public abstract class MediaFileMapper {
@@ -22,16 +21,26 @@ public abstract class MediaFileMapper {
 
   @Mapping(target = "id", source = "id")
   @Mapping(target = "fileName", source = "fileName")
+  @Mapping(target = "description", source = "description")
+  @Mapping(target = "fileData", ignore = true)
   abstract MediaFileDTO toDTO(MediaFileProjection projection);
 
   @Mapping(target = "id", ignore = true)
-  @Mapping(target = "fileName", expression = "java(file.getOriginalFilename())")
-  @Mapping(target = "fileData", expression = "java(fileSecurity.encrypt(file.getBytes()))")
-  abstract MediaFileEntity toEntity(MultipartFile file)
+  @Mapping(target = "fileName", expression = "java(form.getFile().getOriginalFilename())")
+  @Mapping(target = "description", source = "description", defaultExpression = "java(\"\")")
+  @Mapping(target = "fileData", expression = "java(form.getFile().getBytes())")
+  abstract MediaFileDTO toDTO(MediaFileForm form) throws IOException;
+
+  @Mapping(target = "id", ignore = true)
+  @Mapping(target = "fileName", source = "fileName")
+  @Mapping(target = "description", source = "description")
+  @Mapping(target = "fileData", expression = "java(fileSecurity.encrypt(dto.fileData()))")
+  abstract MediaFileEntity toEntity(MediaFileDTO dto)
           throws IOException, IllegalBlockSizeException, BadPaddingException, InvalidKeyException;
 
   @Mapping(target = "id", source = "id")
   @Mapping(target = "fileName", source = "fileName")
+  @Mapping(target = "description", source = "description")
   abstract MediaFileModel toModel(MediaFileDTO dto);
 
   Resource toResource(MediaFileEntity entity)

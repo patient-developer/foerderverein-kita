@@ -13,7 +13,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.view.RedirectView;
@@ -31,6 +30,7 @@ public class MediaFileController {
   ModelAndView mediaGet(Model model) {
     var mediaFiles = service.fetchAll().stream().map(mapper::toModel).toList();
     model.addAttribute("mediaFiles", mediaFiles);
+    model.addAttribute("form", new MediaFileForm());
     return new ModelAndView("media");
   }
 
@@ -59,10 +59,11 @@ public class MediaFileController {
   }
 
   @PostMapping
-  ModelAndView mediaPost(
-      @RequestParam("mediaFile") MultipartFile file, RedirectAttributes attributes) {
-    service.persist(file);
-    attributes.addFlashAttribute(MessageType.SUCCESS, uploadSuccessMessage(file));
+  ModelAndView mediaPost(@ModelAttribute("form") MediaFileForm form, RedirectAttributes attributes)
+          throws IOException {
+    var dto = mapper.toDTO(form);
+    service.persist(dto);
+    attributes.addFlashAttribute(MessageType.SUCCESS, uploadSuccessMessage(form));
     return new ModelAndView(new RedirectView("/media", true));
   }
 
@@ -81,8 +82,9 @@ public class MediaFileController {
     return new ModelAndView(new RedirectView("/media", true));
   }
 
-  private static String uploadSuccessMessage(MultipartFile file) {
-    return String.format("Datei '%s' erfolgreich hochgeladen.", file.getOriginalFilename());
+  private static String uploadSuccessMessage(MediaFileForm form) {
+    return String.format(
+            "Datei '%s' erfolgreich hochgeladen.", form.getFile().getOriginalFilename());
   }
 
   private static String deleteSuccessMessage(String fileName) {

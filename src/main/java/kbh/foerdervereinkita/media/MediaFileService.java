@@ -10,7 +10,6 @@ import kbh.foerdervereinkita.storage.repository.MediaFileRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Service;
-import org.springframework.web.multipart.MultipartFile;
 
 @Service
 @RequiredArgsConstructor
@@ -33,20 +32,20 @@ public class MediaFileService {
     }
   }
 
-  public void persist(MultipartFile file) {
+  public void persist(MediaFileDTO dto) {
 
-    if (repository.existsByFileName(file.getOriginalFilename())) {
-      throw MediaFileException.alreadyExists(file.getOriginalFilename());
+    if (repository.existsByFileName(dto.fileName())) {
+      throw MediaFileException.alreadyExists(dto.fileName());
     }
 
     try {
-      var entity = mapper.toEntity(file);
+      var entity = mapper.toEntity(dto);
       repository.save(entity);
     } catch (IllegalBlockSizeException
              | BadPaddingException
              | IOException
              | InvalidKeyException e) {
-      throw MediaFileException.writeFailure(file.getOriginalFilename(), e);
+      throw MediaFileException.writeFailure(dto.fileName(), e);
     }
   }
 

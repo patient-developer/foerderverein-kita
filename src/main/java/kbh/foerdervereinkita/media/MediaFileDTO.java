@@ -1,3 +1,4 @@
 package kbh.foerdervereinkita.media;
 
-public record MediaFileDTO(long id, String fileName) {}
+public record MediaFileDTO(Long id, String fileName, String description, byte[] fileData) {
+}

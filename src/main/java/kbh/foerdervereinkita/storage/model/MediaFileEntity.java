@@ -18,6 +18,9 @@ public class MediaFileEntity {
   @Column(name = "file_name", nullable = false, unique = true)
   private String fileName;
 
+  @Column(name = "description", columnDefinition = "TEXT")
+  private String description;
+
   @Lob
   @Column(name = "file_data", nullable = false, columnDefinition = "MEDIUMBLOB")
   private byte[] fileData;
