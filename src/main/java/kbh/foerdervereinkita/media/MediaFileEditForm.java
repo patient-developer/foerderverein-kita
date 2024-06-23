@@ -6,6 +6,6 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 public class MediaFileEditForm {
-    long id;
-    String description;
+  long id;
+  String description;
 }
