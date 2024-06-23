@@ -35,20 +35,40 @@ public class MediaFileController {
   }
 
   @ResponseBody
-  @GetMapping(value = "/{id}", produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
-  Resource mediaGetById(@PathVariable("id") long id) {
-    return service.fetch(id);
+  @GetMapping(value = "/details/{id}", produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
+  ModelAndView mediaDetailsGetById(@PathVariable("id") long id, Model model) throws IOException {
+    var dto = service.fetch(id);
+    var mediaFile = mapper.toModel(dto);
+    model.addAttribute("mediaFile", mediaFile);
+    return new ModelAndView("media-details");
   }
 
   @GetMapping(value = "/download/{id}")
   ResponseEntity<Resource> downloadGetById(@PathVariable("id") long id) throws IOException {
-    var resource = service.fetch(id);
+    var resource = service.fetchResource(id);
     HttpHeaders headers = new HttpHeaders();
     headers.setContentDisposition(
             ContentDisposition.inline().filename(resource.getFilename()).build());
     headers.setContentType(MediaType.APPLICATION_OCTET_STREAM);
     headers.setContentLength(resource.contentLength());
     return ResponseEntity.ok().headers(headers).body(resource);
+  }
+
+  @GetMapping(value = "/edit/{id}")
+  ModelAndView mediaEditGetById(@PathVariable("id") long id, Model model) {
+    var dto = service.fetch(id);
+    var mediaFile = mapper.toModel(dto);
+    model.addAttribute("mediaFile", mediaFile);
+    model.addAttribute("form", new MediaFileForm());
+    return new ModelAndView("media-edit");
+  }
+
+  @PostMapping(value = "/edit")
+  ModelAndView mediaEditPost(
+          @ModelAttribute("form") MediaFileEditForm form, RedirectAttributes attributes) {
+    service.updateDescription(form.getId(), form.getDescription());
+    attributes.addFlashAttribute(MessageType.SUCCESS, editSuccessMessage());
+    return new ModelAndView(new RedirectView("/media", true));
   }
 
   @GetMapping(value = "/delete/{id}")
@@ -89,5 +109,9 @@ public class MediaFileController {
 
   private static String deleteSuccessMessage(String fileName) {
     return String.format("Datei '%s' erfolgreich gelöscht.", fileName);
+  }
+
+  private static String editSuccessMessage() {
+    return "Änderung erfolgreich gespeichert.";
   }
 }

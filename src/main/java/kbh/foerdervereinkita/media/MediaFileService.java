@@ -1,5 +1,6 @@
 package kbh.foerdervereinkita.media;
 
+import jakarta.transaction.Transactional;
 import java.io.IOException;
 import java.security.InvalidKeyException;
 import java.util.List;
@@ -17,13 +18,24 @@ public class MediaFileService {
 
   private final MediaFileRepository repository;
   private final MediaFileMapper mapper;
-  private final FileSecurity fileSecurity;
 
   public List<MediaFileDTO> fetchAll() {
     return repository.findAllProjectedBy().stream().map(mapper::toDTO).toList();
   }
 
-  public Resource fetch(long id) {
+  public MediaFileDTO fetch(long id) {
+    var entity = repository.findById(id);
+    try {
+      return mapper.toDTO(entity);
+    } catch (IllegalBlockSizeException
+             | BadPaddingException
+             | InvalidKeyException
+             | IOException e) {
+      throw MediaFileException.loadFailure(entity.getFileName(), e);
+    }
+  }
+
+  public Resource fetchResource(long id) {
     var entity = repository.findById(id);
     try {
       return mapper.toResource(entity);
@@ -47,6 +59,11 @@ public class MediaFileService {
              | InvalidKeyException e) {
       throw MediaFileException.writeFailure(dto.fileName(), e);
     }
+  }
+
+  @Transactional
+  public void updateDescription(long id, String description) {
+    repository.updateDescription(id, description);
   }
 
   public String remove(long id) {

@@ -8,6 +8,6 @@ import org.springframework.web.multipart.MultipartFile;
 @NoArgsConstructor
 public class MediaFileForm {
 
-    MultipartFile file;
-    String description;
+  MultipartFile file;
+  String description;
 }

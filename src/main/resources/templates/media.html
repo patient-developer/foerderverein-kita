@@ -19,19 +19,24 @@
                     <input type="submit" class="form-control" value="Hochladen">
                 </div>
                 <div class="col col-12 col-md-12 py-2 order-2 order-md-3">
-                    <input type="text" placeholder="Beschreibung (optional)" th:field="*{description}"
-                           class="form-control">
+                    <textarea class="form-control" rows="2" placeholder="Beschreibung (optional)"
+                              th:field="*{description}"></textarea>
                 </div>
             </div>
         </form>
     </div>
     <div class="py-2" th:each="mediaFile : ${mediaFiles}">
-        <div class="row row-cols-3 align-items-center justify-content-evenly">
-            <div class="col col-4 text-start">
+        <div class="row row-cols-5 align-items-center justify-content-evenly">
+            <div class="col col-5 text-start">
                 <a class="link-dark" th:text="${mediaFile.fileName()}"
-                   th:href="@{/media/{id} (id=${mediaFile.id()})}"></a>
+                   th:href="@{/media/details/{id} (id=${mediaFile.id()})}"></a>
             </div>
-            <div class="col col-6 text-start" th:text="${mediaFile.description()}">
+            <div class="col col-4 text-start" th:text="${mediaFile.description()}">
+            </div>
+            <div class="col col-1 text-center">
+                <a th:href="@{/media/edit/{id} (id=${mediaFile.id()})}">
+                    <span><i class="bi bi-pencil-square" style="font-size: x-large"></i></span>
+                </a>
             </div>
             <div class="col col-1 text-center">
                 <a th:href="@{/media/download/{id} (id=${mediaFile.id()})}">

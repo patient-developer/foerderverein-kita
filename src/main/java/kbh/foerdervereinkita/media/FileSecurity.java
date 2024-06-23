@@ -17,8 +17,6 @@ public class FileSecurity {
   private final Key secretKey;
   private final Cipher cipher;
 
-  private static final String ENC_SUFFIX = ".enc";
-
   public FileSecurity(
           @Value("${CRYPT_KEY}") String cryptKey, @Value("${CRYPT_ALGORITHM}") String algorithm)
       throws NoSuchPaddingException, NoSuchAlgorithmException {
