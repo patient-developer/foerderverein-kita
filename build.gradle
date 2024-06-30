@@ -1,6 +1,6 @@
 plugins {
     id 'java'
-    id 'org.springframework.boot' version '3.3.0'
+    id 'org.springframework.boot' version '3.3.1'
     id 'io.spring.dependency-management' version '1.1.5'
     id 'com.diffplug.spotless' version '6.25.0'
 }
@@ -8,7 +8,7 @@ plugins {
 apply from: 'gradle/spotless.gradle'
 
 group = 'kbh'
-version = '1.7.0'
+version = '1.8.0'
 
 java {
     sourceCompatibility = '21'
@@ -20,7 +20,7 @@ repositories {
 
 dependencyManagement {
     dependencies {
-        dependencySet(group: 'org.springframework.boot', version: '3.3.0') {
+        dependencySet(group: 'org.springframework.boot', version: '3.3.1') {
             entry 'spring-boot-starter'
             entry 'spring-boot-starter-test'
             entry 'spring-boot-starter-data-jpa'
@@ -83,4 +83,4 @@ tasks.named('test') {
     useJUnitPlatform()
 }
 
-compileJava.dependsOn spotlessApply
+compileJava.dependsOn spotlessCheck

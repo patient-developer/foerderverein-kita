@@ -1,7 +1,9 @@
 package kbh.foerdervereinkita.storage.model;
 
 public interface MediaFileProjection {
-    Long getId();
+  Long getId();
 
-    String getFileName();
+  String getFileName();
+
+  String getDescription();
 }

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}" xmlns="http://www.w3.org/1999/html">
+<head>
+    <title>Media</title>
+    <meta name="format-detection" content="telephone=no">
+</head>
+<body>
+<div layout:fragment="content" class="container">
+    <div class="row row-cols-1 row-cols-md-3 py-2 justify-content-center">
+        <div class="col col-md-2"></div>
+        <div class="col col-12 col-md-8 text-center">
+            <img class="round img-fluid" alt="..."
+                 th:src="@{'data:image/**;base64,'+${mediaFile.base64EncodedImage()}}">
+        </div>
+        <div class="col col-md-2"></div>
+    </div>
+    <div class="row row-cols-1 row-cols-md-4 py-2 align-items-center justify-content-between">
+        <div class="col col-md-2"></div>
+        <div class="col col-10 col-md-7 text-start" th:text="${mediaFile.fileName()}"></div>
+        <div class="col col-2 col-md-1 text-end">
+            <a th:href="@{/media/edit/{id} (id=${mediaFile.id()})}">
+                <span><i class="bi bi-pencil-square" style="font-size: x-large"></i></span>
+            </a>
+        </div>
+        <div class="col col-md-2"></div>
+    </div>
+    <div class="row row-cols-1 row-cols-md-3 py-2 justify-content-center">
+        <div class="col col-md-2"></div>
+        <div class="col col-12 col-md-8" style="text-align: justify" th:text="${mediaFile.description()}"></div>
+        <div class="col col-md-2"></div>
+    </div>
+</div>
+</body>

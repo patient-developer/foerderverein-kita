@@ -17,16 +17,12 @@ public class FileSecurity {
   private final Key secretKey;
   private final Cipher cipher;
 
-  private static final String ENC_SUFFIX = ".enc";
-
   public FileSecurity(
-      @Value("${CRYPT_KEY}") String cryptKey,
-      @Value("${CRYPT_ALGORITHM}") String algorithm,
-      @Value("${CRYPT_TRANSFORMATION}") String transformation)
+          @Value("${CRYPT_KEY}") String cryptKey, @Value("${CRYPT_ALGORITHM}") String algorithm)
       throws NoSuchPaddingException, NoSuchAlgorithmException {
 
     this.secretKey = new SecretKeySpec(cryptKey.getBytes(), algorithm);
-    this.cipher = Cipher.getInstance(transformation);
+    this.cipher = Cipher.getInstance(algorithm);
   }
 
   public byte[] encrypt(byte[] bytes)

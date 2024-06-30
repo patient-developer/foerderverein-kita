@@ -10,30 +10,43 @@
 <body>
 <div layout:fragment="content" class="container">
     <div class="py-2">
-        <form method="post" enctype="multipart/form-data" th:action="@{/media}">
+        <form action="#" enctype="multipart/form-data" th:action="@{/media}" th:object="${form}" method="POST">
             <div class="row row-cols-1 row-cols-md-2 align-items-center justify-content-evenly">
-                <div class="col col-12 col-md-8 py-2">
-                    <input type="file" name="mediaFile" accept="multipart/form-data" class="form-control">
+                <div class="col col-12 col-md-8 py-2 order-1 order-md-1">
+                    <input type="file" th:field="*{file}" class="form-control">
                 </div>
-                <div class="col col-12 col-md-4 py-2">
+                <div class="col col-12 col-md-4 py-2 order-3 order-md-2">
                     <input type="submit" class="form-control" value="Hochladen">
+                </div>
+                <div class="col col-12 col-md-12 py-2 order-2 order-md-3">
+                    <textarea class="form-control" rows="2" placeholder="Beschreibung (optional)"
+                              th:field="*{description}"></textarea>
                 </div>
             </div>
         </form>
     </div>
     <div class="py-2" th:each="mediaFile : ${mediaFiles}">
-        <div class="row row-cols-3 align-items-center justify-content-evenly">
-            <div class="col col-8 text-start">
+        <div class="row row-cols-5 align-items-center justify-content-evenly">
+            <div class="col col-5 text-start">
                 <a class="link-dark" th:text="${mediaFile.fileName()}"
-                   th:href="@{/media/{id} (id=${mediaFile.id()})}"></a>
+                   th:href="@{/media/details/{id} (id=${mediaFile.id()})}"></a>
             </div>
-            <div class="col col-2 text-center">
+            <div class="col col-4 text-start" th:text="${mediaFile.description()}">
+            </div>
+            <div class="col col-1 text-center">
+                <a th:href="@{/media/edit/{id} (id=${mediaFile.id()})}">
+                    <span><i class="bi bi-pencil-square" style="font-size: x-large"></i></span>
+                </a>
+            </div>
+            <div class="col col-1 text-center">
                 <a th:href="@{/media/download/{id} (id=${mediaFile.id()})}">
                     <span><i class="bi bi-download" style="font-size: x-large"></i></span>
                 </a>
             </div>
-            <div class="col col-2 text-center">
-                <a th:href="@{/media/delete/{id} (id=${mediaFile.id()})}">
+            <div class="col col-1 text-center">
+                <a th:href="@{/media/delete/{id} (id=${mediaFile.id()})}"
+                   th:data-confirm-delete="'Datei wirklich löschen?'"
+                   onclick="if (!confirm(this.getAttribute('data-confirm-delete'))) return false">
                     <span><i class="bi bi-trash" style="font-size: x-large"></i></span>
                 </a>
             </div>

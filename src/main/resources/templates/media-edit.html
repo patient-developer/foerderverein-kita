@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}" xmlns="http://www.w3.org/1999/html">
+<head>
+    <title>Media</title>
+    <meta name="format-detection" content="telephone=no">
+</head>
+<body>
+<div layout:fragment="content" class="container">
+    <form action="#" th:action="@{/media/edit}" th:object="${form}" method="POST">
+        <div class="row row-cols-1 row-cols-md-3 align-items-center justify-content-evenly">
+            <div class="col col-md-2"></div>
+            <div class="col col-12 col-md-8 text-center py-2">
+                <img class="round img-fluid" alt="..."
+                     th:src="@{'data:image/**;base64,'+${mediaFile.base64EncodedImage()}}">
+            </div>
+            <div class="col col-md-2"></div>
+        </div>
+        <div class="row row-cols-1 row-cols-md-3 align-items-center justify-content-evenly">
+            <div class="col col-md-2"></div>
+            <div class="col col-12 col-md-8 text-center py-2">
+                <textarea class="form-control" rows="2" th:field="${mediaFile.description}"
+                          name="description"></textarea>
+            </div>
+            <div class="col col-md-2"></div>
+        </div>
+        <div class="row row-cols-1 row-cols-md-3 align-items-center justify-content-evenly">
+            <div class="col col-md-2"></div>
+            <div class="col col-12 col-md-3 py-2">
+                <input type="hidden" th:value="${mediaFile.id()}" name="id">
+                <input type="submit" class="form-control" value="Speichern">
+            </div>
+            <div class="col col-md-7"></div>
+        </div>
+    </form>
+</div>
+</body>
