@@ -42,4 +42,7 @@ public class Config {
 
   @Value("${REGISTER_NUMBER}")
   private final String registerNumber;
+
+  @Value("${PAYPAL_BUTTON_ID}")
+  private final String paypalButtonId;
 }
