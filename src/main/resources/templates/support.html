@@ -19,7 +19,12 @@
                 </button>
             </div>
             <div class="col-md text-center my-3">
-                <p class="lead my-4">Unterstütze uns auch gerne mit einer Spende.</p>
+                <p class="lead my-4">Unterstütze uns auch gerne mit einer Spende</p>
+                <a th:href="@{https://www.paypal.com/donate/?hosted_button_id={id}(id=${@config.getPaypalButtonId()})}"
+                   target="_blank">
+                    <span><i class="bi bi-paypal" style="font-size:xxx-large "></i></span>
+                </a>
+                <p class="lead my-4">Oder ganz klassisch via Überweisung</p>
                 <p class="lead my-4" th:text="${@config.getAssociationName()}"></p>
                 <p class="lead my-4" th:text="${@config.getCashAccountIban()}"></p>
                 <p class="lead my-4" th:text="${@config.getCashAccountCustodian()}"></p>
