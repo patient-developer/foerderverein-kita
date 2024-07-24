@@ -24,6 +24,9 @@
         <div class="collapse navbar-collapse" id="navmenu">
             <ul class="navbar-nav ms-auto">
                 <li sec:authorize="!isAuthenticated()" class="nav-item">
+                    <a href="#" th:href="@{/kindergarten}" class="nav-link">Kindergarten</a>
+                </li>
+                <li sec:authorize="!isAuthenticated()" class="nav-item">
                     <a href="#" th:href="@{/flohmarkt}" class="nav-link">Flohmarkt</a>
                 </li>
                 <li sec:authorize="!isAuthenticated()" class="nav-item">
