@@ -1,7 +1,6 @@
 package kbh.foerdervereinkita.service;
 
 import java.nio.file.Path;
-
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.Resource;

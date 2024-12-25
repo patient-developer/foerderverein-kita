@@ -18,8 +18,8 @@ import org.springframework.core.io.Resource;
 @Mapper(componentModel = "spring", unmappedTargetPolicy = ReportingPolicy.ERROR)
 public abstract class MediaFileMapper {
 
-  @Autowired
-  FileSecurity fileSecurity;
+    @Autowired
+    FileSecurity fileSecurity;
 
   @Mapping(target = "id", source = "id")
   @Mapping(target = "fileName", source = "fileName")

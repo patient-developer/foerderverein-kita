@@ -10,8 +10,8 @@
     <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
     <script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
     <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
-    <link rel="stylesheet" th:href="@{/webjars/bootstrap/5.2.3/css/bootstrap.min.css}"/>
-    <link rel="stylesheet" th:href="@{/webjars/bootstrap-icons/1.10.5/font/bootstrap-icons.css}"/>
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/5.3.3/css/bootstrap.min.css}"/>
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap-icons/1.11.3/font/bootstrap-icons.css}"/>
     <link rel="stylesheet" th:href="@{/css/main.css}"/>
 </head>
 <body>
@@ -23,8 +23,17 @@
         </button>
         <div class="collapse navbar-collapse" id="navmenu">
             <ul class="navbar-nav ms-auto">
-                <li sec:authorize="!isAuthenticated()" class="nav-item">
-                    <a href="#" th:href="@{/kindergarten}" class="nav-link">Kindergarten</a>
+                <li sec:authorize="!isAuthenticated()" class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                       aria-expanded="false">
+                        Kindergarten
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#" th:href="@{/kindergarten/einrichtung}">Einrichtung</a>
+                        </li>
+                        <li><a class="dropdown-item" href="#"
+                               th:href="@{/kindergarten/elternausschuss}">Elternausschuss</a></li>
+                    </ul>
                 </li>
                 <li sec:authorize="!isAuthenticated()" class="nav-item">
                     <a href="#" th:href="@{/flohmarkt}" class="nav-link">Flohmarkt</a>

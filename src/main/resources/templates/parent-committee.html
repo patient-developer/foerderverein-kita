@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Elternausschuss</title>
+    <meta name="format-detection" content="telephone=no">
+</head>
+<body>
+<div layout:fragment="content" class="container">
+    <div class="text-center">
+        <h3>Der Elternausschuss stellt sich vor</h3>
+    </div>
+    <footer class="fixed-bottom text-center">
+        <h5>Ihre Nachricht an uns</h5>
+        <button class="btn btn-info btn-lg my-3">
+            <a class="link-dark fw-bold" th:href="@{/kindergarten/elternausschuss/nachricht}">Nachricht</a>
+        </button>
+    </footer>
+</div>
+>
+</body>
+</html>
