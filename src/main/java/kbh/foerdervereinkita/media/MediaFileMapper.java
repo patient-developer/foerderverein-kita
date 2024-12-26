@@ -18,15 +18,14 @@ import org.springframework.core.io.Resource;
 @Mapper(componentModel = "spring", unmappedTargetPolicy = ReportingPolicy.ERROR)
 public abstract class MediaFileMapper {
 
-    @Autowired
-    FileSecurity fileSecurity;
+  @Autowired FileSecurity fileSecurity;
 
   @Mapping(target = "id", source = "id")
   @Mapping(target = "fileName", source = "fileName")
   @Mapping(target = "description", source = "description")
   @Mapping(target = "fileData", expression = "java(fileSecurity.decrypt(entity.getFileData()))")
   abstract MediaFileDTO toDTO(MediaFileEntity entity)
-          throws IOException, IllegalBlockSizeException, BadPaddingException, InvalidKeyException;
+      throws IOException, IllegalBlockSizeException, BadPaddingException, InvalidKeyException;
 
   @Mapping(target = "id", source = "id")
   @Mapping(target = "fileName", source = "fileName")
@@ -54,15 +53,15 @@ public abstract class MediaFileMapper {
   @Mapping(target = "description", source = "description")
   @Mapping(target = "fileData", expression = "java(fileSecurity.encrypt(dto.fileData()))")
   abstract MediaFileEntity toEntity(MediaFileDTO dto)
-          throws IOException, IllegalBlockSizeException, BadPaddingException, InvalidKeyException;
+      throws IOException, IllegalBlockSizeException, BadPaddingException, InvalidKeyException;
 
   @Mapping(target = "id", source = "id")
   @Mapping(target = "fileName", source = "fileName")
   @Mapping(target = "description", source = "description")
   @Mapping(
-          target = "base64EncodedImage",
-          source = "fileData",
-          qualifiedByName = "toBase64EncodedImage")
+      target = "base64EncodedImage",
+      source = "fileData",
+      qualifiedByName = "toBase64EncodedImage")
   abstract MediaFileModel toModel(MediaFileDTO dto);
 
   @Named("toBase64EncodedImage")
@@ -71,7 +70,7 @@ public abstract class MediaFileMapper {
   }
 
   Resource toResource(MediaFileEntity entity)
-          throws IllegalBlockSizeException, BadPaddingException, InvalidKeyException {
+      throws IllegalBlockSizeException, BadPaddingException, InvalidKeyException {
     var decryptedBytes = fileSecurity.decrypt(entity.getFileData());
     return new ByteArrayResource(decryptedBytes) {
       @Override

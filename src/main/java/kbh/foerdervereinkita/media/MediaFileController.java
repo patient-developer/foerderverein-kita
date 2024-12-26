@@ -48,7 +48,7 @@ public class MediaFileController {
     var resource = service.fetchResource(id);
     HttpHeaders headers = new HttpHeaders();
     headers.setContentDisposition(
-            ContentDisposition.inline().filename(resource.getFilename()).build());
+        ContentDisposition.inline().filename(resource.getFilename()).build());
     headers.setContentType(MediaType.APPLICATION_OCTET_STREAM);
     headers.setContentLength(resource.contentLength());
     return ResponseEntity.ok().headers(headers).body(resource);
@@ -65,7 +65,7 @@ public class MediaFileController {
 
   @PostMapping(value = "/edit")
   ModelAndView mediaEditPost(
-          @ModelAttribute("form") MediaFileEditForm form, RedirectAttributes attributes) {
+      @ModelAttribute("form") MediaFileEditForm form, RedirectAttributes attributes) {
     service.updateDescription(form.getId(), form.getDescription());
     attributes.addFlashAttribute(MessageType.SUCCESS, editSuccessMessage());
     return new ModelAndView(new RedirectView("/media", true));
@@ -80,7 +80,7 @@ public class MediaFileController {
 
   @PostMapping
   ModelAndView mediaPost(@ModelAttribute("form") MediaFileForm form, RedirectAttributes attributes)
-          throws IOException {
+      throws IOException {
     var dto = mapper.toDTO(form);
     service.persist(dto);
     attributes.addFlashAttribute(MessageType.SUCCESS, uploadSuccessMessage(form));
@@ -89,7 +89,7 @@ public class MediaFileController {
 
   @ExceptionHandler(MediaFileException.class)
   public ModelAndView handleMediaFileException(
-          MediaFileException exception, RedirectAttributes attributes) {
+      MediaFileException exception, RedirectAttributes attributes) {
     log.error(exception.getMessage(), exception);
     attributes.addFlashAttribute(MessageType.ERROR, exception.getMessage());
     return new ModelAndView(new RedirectView("/media", true));
@@ -104,7 +104,7 @@ public class MediaFileController {
 
   private static String uploadSuccessMessage(MediaFileForm form) {
     return String.format(
-            "Datei '%s' erfolgreich hochgeladen.", form.getFile().getOriginalFilename());
+        "Datei '%s' erfolgreich hochgeladen.", form.getFile().getOriginalFilename());
   }
 
   private static String deleteSuccessMessage(String fileName) {

@@ -9,11 +9,11 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class ParentCommitteeService {
 
-    private final ParentCommitteeMessageRepository repository;
-    private final ParentCommitteeMapper mapper;
+  private final ParentCommitteeMessageRepository repository;
+  private final ParentCommitteeMapper mapper;
 
-    public void persist(ParentCommitteeMessage message) {
-        var entity = mapper.toEntity(message);
-        repository.save(entity);
-    }
+  public void persist(ParentCommitteeMessage message) {
+    var entity = mapper.toEntity(message);
+    repository.save(entity);
+  }
 }

@@ -27,7 +27,7 @@ public class SecurityConfiguration {
                         "/kueken",
                         "/events",
                         "/flohmarkt/**",
-                                "/kindergarten/**",
+                        "/kindergarten/**",
                         "/board",
                         "/login",
                         "/error",

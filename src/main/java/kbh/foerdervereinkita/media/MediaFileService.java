@@ -28,9 +28,9 @@ public class MediaFileService {
     try {
       return mapper.toDTO(entity);
     } catch (IllegalBlockSizeException
-             | BadPaddingException
-             | InvalidKeyException
-             | IOException e) {
+        | BadPaddingException
+        | InvalidKeyException
+        | IOException e) {
       throw MediaFileException.loadFailure(entity.getFileName(), e);
     }
   }
@@ -54,9 +54,9 @@ public class MediaFileService {
       var entity = mapper.toEntity(dto);
       repository.save(entity);
     } catch (IllegalBlockSizeException
-             | BadPaddingException
-             | IOException
-             | InvalidKeyException e) {
+        | BadPaddingException
+        | IOException
+        | InvalidKeyException e) {
       throw MediaFileException.writeFailure(dto.fileName(), e);
     }
   }

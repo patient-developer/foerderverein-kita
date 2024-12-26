@@ -38,7 +38,7 @@ public class ExtrasController {
     var resource = service.getInternalProjectTemplate();
     var headers = new HttpHeaders();
     headers.setContentDisposition(
-            ContentDisposition.inline().filename(resource.getFilename()).build());
+        ContentDisposition.inline().filename(resource.getFilename()).build());
     headers.setContentType(MediaType.APPLICATION_OCTET_STREAM);
     headers.setContentLength(resource.contentLength());
     return ResponseEntity.ok().headers(headers).body(resource);

@@ -35,8 +35,8 @@ public class ParentCommitteeController {
 
   @PostMapping(path = "/elternausschuss/nachricht")
   public ModelAndView parentCommitteeMessagePost(
-          @Valid @ModelAttribute("form") ParentCommitteeMessageForm form,
-          RedirectAttributes attributes) {
+      @Valid @ModelAttribute("form") ParentCommitteeMessageForm form,
+      RedirectAttributes attributes) {
 
     if (!StringUtils.hasText(form.getContent())) {
       throw new IllegalArgumentException("Bitte keine leere Nachricht abschicken.");
@@ -51,7 +51,7 @@ public class ParentCommitteeController {
 
   @ExceptionHandler(IllegalArgumentException.class)
   public ModelAndView handleIllegalArgumentException(
-          IllegalArgumentException exception, RedirectAttributes attributes) {
+      IllegalArgumentException exception, RedirectAttributes attributes) {
     log.error(exception.getMessage(), exception);
     attributes.addFlashAttribute(MessageType.ERROR, exception.getMessage());
     return new ModelAndView(new RedirectView("/kindergarten/elternausschuss/nachricht"));
