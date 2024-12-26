@@ -12,4 +12,6 @@ public class Views {
   public static final String EVENTS = "events";
   public static final String SUPPORT = "support";
   public static final String EXTRAS = "extras";
+  public static final String PARENT_COMMITTEE = "parent-committee";
+  public static final String PARENT_COMMITTEE_MESSAGE = "parent-committee-message";
 }

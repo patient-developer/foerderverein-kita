@@ -10,20 +10,33 @@
 </head>
 <body>
 <div layout:fragment="content" class="container">
+    <div class="text-center py-2">
+        <h3>Ihre Nachricht an uns</h3>
+    </div>
+    <div class="row row-cols-1 row-cols-md-3 align-items-center justify-content-evenly">
+        <div class="col col-md-2"></div>
+        <div class="col col-12 col-md-8">
+            <p style="text-align: justify">Sie haben Wünsche oder Anregungen, hätten gerne eine Auskunft oder sind mit
+                etwas unzufrieden?</p>
+            <p style="text-align: justify"> Melden Sie sich gerne anonym bei uns.<br>Wünschen Sie eine Rückmeldung zu
+                Ihrem Anliegen, geben Sie bitte einfach eine Kontaktmöglichkeit an.</p>
+        </div>
+        <div class="col col-md-2"></div>
+    </div>
     <form action="#" th:action="@{/kindergarten/elternausschuss/nachricht}" th:object="${form}"
           method="post">
         <div class="row row-cols-1 row-cols-md-3 align-items-center justify-content-evenly">
             <div class="col col-md-2"></div>
             <div class="col col-12 col-md-8 text-center py-2">
-                <textarea class="form-control" rows="2" th:field="${form.message}"></textarea>
+                <textarea class="form-control" rows="2" th:field="${form.content}" required></textarea>
             </div>
             <div class="col col-md-2"></div>
-            <div class="row row-cols-1 row-cols-md-3 align-items-center justify-content-evenly">
-                <div class="col col-md-2"></div>
-                <div class="col col-12 col-md-8 py-2">
+            <div class="row row-cols-3 align-items-center justify-content-evenly">
+                <div class="col-2"></div>
+                <div class="col-8 py-2">
                     <input type="submit" class="form-control" value="Abschicken">
                 </div>
-                <div class="col col-md-2"></div>
+                <div class="col-2"></div>
             </div>
         </div>
     </form>

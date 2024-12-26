@@ -5,6 +5,6 @@ import lombok.NoArgsConstructor;
 
 @Data
 @NoArgsConstructor
-public class ParentCommitteeForm {
-    String message;
+public class ParentCommitteeMessageForm {
+  String content;
 }
