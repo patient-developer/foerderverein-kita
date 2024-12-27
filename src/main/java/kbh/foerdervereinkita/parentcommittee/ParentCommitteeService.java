@@ -1,5 +1,6 @@
 package kbh.foerdervereinkita.parentcommittee;
 
+import java.util.Collection;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -9,11 +10,16 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class ParentCommitteeService {
 
-  private final ParentCommitteeMessageRepository repository;
+  private final ParentCommitteeMessageRepository messageRepository;
+  private final ParentCommitteeMemberRepository memberRepository;
   private final ParentCommitteeMapper mapper;
 
   public void persist(ParentCommitteeMessage message) {
     var entity = mapper.toEntity(message);
-    repository.save(entity);
+    messageRepository.save(entity);
+  }
+
+  public Collection<ParentCommitteeMember> fetchParentCommitteeMembers() {
+    return memberRepository.findAll().stream().map(mapper::toMember).toList();
   }
 }

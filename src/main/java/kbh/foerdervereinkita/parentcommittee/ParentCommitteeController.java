@@ -1,5 +1,7 @@
 package kbh.foerdervereinkita.parentcommittee;
 
+import static java.util.stream.Collectors.groupingBy;
+
 import jakarta.validation.Valid;
 import kbh.foerdervereinkita.commons.Views;
 import kbh.foerdervereinkita.constants.MessageType;
@@ -23,7 +25,10 @@ public class ParentCommitteeController {
   private final ParentCommitteeMapper mapper;
 
   @GetMapping(path = "/elternausschuss")
-  public ModelAndView parentCommitteeGet() {
+  public ModelAndView parentCommitteeGet(Model model) {
+    var members = service.fetchParentCommitteeMembers();
+    var membersByGroup = members.stream().collect(groupingBy(ParentCommitteeMember::groupName));
+    model.addAttribute("membersByGroup", membersByGroup);
     return new ModelAndView(Views.PARENT_COMMITTEE);
   }
 

@@ -10,16 +10,32 @@
 </head>
 <body>
 <div layout:fragment="content" class="container">
-    <div class="text-center">
+    <div class="text-center py-2">
         <h3>Der Elternausschuss stellt sich vor</h3>
     </div>
-    <footer class="fixed-bottom text-center">
-        <h5>Ihre Nachricht an uns</h5>
-        <button class="btn btn-info btn-lg my-3">
-            <a class="link-dark fw-bold" th:href="@{/kindergarten/elternausschuss/nachricht}">Nachricht</a>
-        </button>
-    </footer>
+    <div class="row row-cols-1 row-cols-md-2 row-cols-xl-3 justify-content-evenly align-items-center">
+        <div class="col px-2 py-2" th:each="entry : ${membersByGroup}">
+            <div class="row row-cols-2">
+                <div class="col col-12 text-center">
+                    <h4 th:text="${entry.key}"></h4>
+                </div>
+                <div class="col col-6" th:each="member : ${entry.value}">
+                    <div class="card">
+                        <img src="#" th:src="@{'~/images/' + ${member.imageFileName}}" class="rounded-circle card-img" th:alt="${member.imageAlternateText}"/>
+                        <div class="card-body text-center">
+                            <p class="card-text" style="font-size: large" th:text="${member.fullName}"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<footer class="fixed-bottom text-center">
+    <h5>Ihre Nachricht an uns</h5>
+    <button class="btn btn-info btn-lg my-3">
+        <a class="link-dark fw-bold" th:href="@{/kindergarten/elternausschuss/nachricht}">Nachricht</a>
+    </button>
+</footer>
 </div>
->
 </body>
 </html>
