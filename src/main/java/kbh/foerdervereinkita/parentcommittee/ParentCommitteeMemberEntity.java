@@ -23,7 +23,4 @@ public class ParentCommitteeMemberEntity {
 
   @Column(name = "image_file_name", nullable = false)
   private String imageFileName;
-
-  @Column(name = "image_alternate_text", nullable = false)
-  private String imageAlternateText;
 }

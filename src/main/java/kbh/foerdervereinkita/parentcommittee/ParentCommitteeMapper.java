@@ -22,6 +22,14 @@ public interface ParentCommitteeMapper {
   @Mapping(target = "fullName", source = "fullName")
   @Mapping(target = "groupName", source = "groupName")
   @Mapping(target = "imageFileName", source = "imageFileName")
-  @Mapping(target = "imageAlternateText", source = "imageAlternateText")
   ParentCommitteeMember toMember(ParentCommitteeMemberEntity entity);
+
+  @Mapping(target = "fullName", source = "fullName")
+  @Mapping(target = "groupName", source = "groupName")
+  @Mapping(target = "imageFileName", source = "imageFileName")
+  @Mapping(
+      target = "imageAlternateText",
+      expression =
+          "java(String.format(\"Kita Sonnenfeld Elternausschuss %s %s\", member.groupName(), member.fullName()))")
+  ParentCommitteeMemberModel toModel(ParentCommitteeMember member);
 }

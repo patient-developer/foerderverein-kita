@@ -27,8 +27,9 @@ public class ParentCommitteeController {
   @GetMapping(path = "/elternausschuss")
   public ModelAndView parentCommitteeGet(Model model) {
     var members = service.fetchParentCommitteeMembers();
-    var membersByGroup = members.stream().collect(groupingBy(ParentCommitteeMember::groupName));
-    model.addAttribute("membersByGroup", membersByGroup);
+    var models = members.stream().map(mapper::toModel).toList();
+    var modelsByGroup = models.stream().collect(groupingBy(ParentCommitteeMemberModel::groupName));
+    model.addAttribute("modelsByGroup", modelsByGroup);
     return new ModelAndView(Views.PARENT_COMMITTEE);
   }
 
