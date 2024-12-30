@@ -1,3 +1,3 @@
 package kbh.foerdervereinkita.parentcommittee;
 
-public record ParentCommitteeMessage(String content) {}
+public record ParentCommitteeMessage(String mail, String phone, String content) {}

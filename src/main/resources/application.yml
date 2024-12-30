@@ -10,3 +10,9 @@ spring:
     hiddenmethod:
       filter:
         enabled: true
+  mail:
+    parent-committee:
+      host: ${PARENT_COMMITTEE_MAIL_HOST}
+      port: ${PARENT_COMMITTEE_MAIL_PORT}
+      username: ${PARENT_COMMITTEE_MAIL_USERNAME}
+      password: ${PARENT_COMMITTEE_MAIL_PASSWORD}

@@ -16,6 +16,10 @@ public class ParentCommitteeMessageEntity {
   @Column(nullable = false, unique = true, updatable = false)
   private long id;
 
+  @Column private String mail;
+
+  @Column private String phone;
+
   @Column(nullable = false, columnDefinition = "MEDIUMTEXT")
   private String content;
 
