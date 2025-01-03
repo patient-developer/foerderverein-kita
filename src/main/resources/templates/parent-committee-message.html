@@ -17,40 +17,49 @@
         <div class="col col-md-2"></div>
         <div class="col col-12 col-md-8">
             <p style="text-align: justify">Sie haben Wünsche oder Anregungen, hätten gerne eine Auskunft oder haben
-                etwas auf dem Herzen?</p>
-            <p style="text-align: justify">Schreiben Sie uns gerne eine Nachricht, auch anonym.</p>
+                etwas auf dem Herzen?<br>Schreiben Sie uns gerne eine E-Mail an:</p>
+        </div>
+        <div class="col col-md-2"></div>
+    </div>
+    <div class="row row-cols-1 row-cols-md-3 align-items-center justify-content-evenly">
+        <div class="col col-md-2"></div>
+        <div class="col col-12 col-md-8 text-center">
+            <a class="link-dark" style="font-weight: bold" th:href="'mailto:' + ${mail}" th:text="${mail}"></a>
+        </div>
+        <div class="col col-md-2"></div>
+    </div>
+    <div class="row row-cols-1 row-cols-md-3 align-items-center justify-content-evenly py-2">
+        <div class="col col-md-2"></div>
+        <div class="col col-12 col-md-8">
+            <p style="text-align: justify">Schicken Sie uns auch gerne eine Nachricht über das Web-Formular, natürlich auch anonym.</p>
         </div>
         <div class="col col-md-2"></div>
     </div>
     <form action="#" th:action="@{/kindergarten/elternausschuss/nachricht}" th:object="${form}"
           method="post">
-        <div class="row row-cols-1 row-cols-md-3 align-items-center justify-content-evenly">
-            <div class="col col-md-3"></div>
-            <div class="col col-12 col-md-6 text-center py-2">
+        <div class="row row-cols-1 row-cols-md-4 align-items-center justify-content-evenly">
+            <div class="col col-md-1"></div>
+            <div class="col col-12 col-md-5 text-center py-2">
                 <input type="email" class="form-control" th:field="${form.mail}" placeholder="E-Mail (optional)">
             </div>
-            <div class="col col-md-3"></div>
-        </div>
-        <div class="row row-cols-1 row-cols-md-3 align-items-center justify-content-evenly">
-            <div class="col col-md-3"></div>
-            <div class="col col-12 col-md-6 text-center py-2">
+            <div class="col col-12 col-md-5 text-center py-2">
                 <input type="email" class="form-control" th:field="${form.phone}" placeholder="Telefon (optional)">
             </div>
-            <div class="col col-md-3"></div>
+            <div class="col col-md-1"></div>
         </div>
-        <div class="row row-cols-1 row-cols-md-3 align-items-center justify-content-evenly">
-            <div class="col col-md-2"></div>
-            <div class="col col-12 col-md-8 text-center py-2">
+        <div class="row row-cols-1 row-cols-md-3 align-items-center justify-content-evenly py-2">
+            <div class="col col-md-1"></div>
+            <div class="col col-12 col-md-10 text-center">
                 <textarea class="form-control" rows="5" th:field="${form.content}" required></textarea>
             </div>
-            <div class="col col-md-2"></div>
+            <div class="col col-md-1"></div>
         </div>
-        <div class="row row-cols-3 align-items-center justify-content-evenly">
-            <div class="col-2"></div>
-            <div class="col-8 py-2">
+        <div class="row row-cols-1 row-cols-sm-3 align-items-center justify-content-evenly py-2">
+            <div class="col col-sm-6 col-md-7"></div>
+            <div class="col col-12 col-sm-6 col-md-4">
                 <input type="submit" class="form-control" value="Abschicken">
             </div>
-            <div class="col-2"></div>
+            <div class="col col-md-1"></div>
         </div>
     </form>
 </div>

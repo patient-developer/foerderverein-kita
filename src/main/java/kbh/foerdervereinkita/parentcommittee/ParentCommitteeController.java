@@ -5,6 +5,7 @@ import static java.util.stream.Collectors.groupingBy;
 import jakarta.validation.Valid;
 import kbh.foerdervereinkita.commons.Views;
 import kbh.foerdervereinkita.constants.MessageType;
+import kbh.foerdervereinkita.email.ParentCommitteeMailConfig;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
@@ -23,6 +24,7 @@ public class ParentCommitteeController {
 
   private final ParentCommitteeService service;
   private final ParentCommitteeMapper mapper;
+  private final ParentCommitteeMailConfig mailConfig;
 
   @GetMapping(path = "/elternausschuss")
   public ModelAndView parentCommitteeGet(Model model) {
@@ -36,6 +38,7 @@ public class ParentCommitteeController {
   @GetMapping(path = "/elternausschuss/nachricht")
   public ModelAndView parentCommitteeMessageGet(Model model) {
     model.addAttribute("form", new ParentCommitteeMessageForm());
+    model.addAttribute("mail", mailConfig.username());
     return new ModelAndView(Views.PARENT_COMMITTEE_MESSAGE);
   }
 

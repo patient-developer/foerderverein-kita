@@ -15,10 +15,7 @@ public class MailServiceConfig {
     sender.setUsername(config.username());
     sender.setPassword(config.password());
     var properties = sender.getJavaMailProperties();
-    properties.put("mail.transport.protocol", "smtp");
-    properties.put("mail.smtp.auth", "true");
-    properties.put("mail.smtp.ssl.enable", "true");
-    properties.put("mail.smtp.starttls.enable", "true");
+    config.properties().forEach(properties::setProperty);
     return new MailService(sender);
   }
 }
