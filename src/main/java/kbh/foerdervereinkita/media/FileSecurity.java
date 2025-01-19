@@ -18,7 +18,7 @@ public class FileSecurity {
   private final Cipher cipher;
 
   public FileSecurity(
-          @Value("${CRYPT_KEY}") String cryptKey, @Value("${CRYPT_ALGORITHM}") String algorithm)
+      @Value("${CRYPT_KEY}") String cryptKey, @Value("${CRYPT_ALGORITHM}") String algorithm)
       throws NoSuchPaddingException, NoSuchAlgorithmException {
 
     this.secretKey = new SecretKeySpec(cryptKey.getBytes(), algorithm);

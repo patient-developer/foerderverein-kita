@@ -15,16 +15,16 @@ import reactor.core.publisher.Mono;
 @RequestMapping(path = "/kindergarten")
 public class KindergartenController {
 
-    private final KindergartenService service;
+  private final KindergartenService service;
 
-    @GetMapping
-    public ModelAndView kindergartenGet() {
-        return new ModelAndView("kindergarten");
-    }
+  @GetMapping(path = "/einrichtung")
+  public ModelAndView kindergartenGet() {
+    return new ModelAndView("kindergarten");
+  }
 
-    @ResponseBody
-    @GetMapping(value = "/video", produces = "video/mp4")
-    public Mono<Resource> kindergartenVideoGet() {
-        return service.fetchVideo();
-    }
+  @ResponseBody
+  @GetMapping(value = "/einrichtung/video", produces = "video/mp4")
+  public Mono<Resource> kindergartenVideoGet() {
+    return service.fetchVideo();
+  }
 }

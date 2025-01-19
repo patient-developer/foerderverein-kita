@@ -31,6 +31,9 @@
         <loc>https://www.foerderverein-kita-sonnenfeld.saarland/extras</loc>
     </url>
     <url>
-        <loc>https://www.foerderverein-kita-sonnenfeld.saarland/kindergarten</loc>
+        <loc>https://www.foerderverein-kita-sonnenfeld.saarland/kindergarten/einrichtung</loc>
+    </url>
+    <url>
+        <loc>https://www.foerderverein-kita-sonnenfeld.saarland/kindergarten/elternausschuss</loc>
     </url>
 </urlset>

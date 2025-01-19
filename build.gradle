@@ -8,7 +8,7 @@ plugins {
 apply from: 'gradle/spotless.gradle'
 
 group = 'kbh'
-version = '1.11.0'
+version = '1.12.0'
 
 java {
     sourceCompatibility = '21'
@@ -22,6 +22,7 @@ dependencyManagement {
     dependencies {
         dependencySet(group: 'org.springframework.boot', version: '3.3.2') {
             entry 'spring-boot-starter'
+            entry 'spring-boot-starter-cache'
             entry 'spring-boot-starter-test'
             entry 'spring-boot-starter-data-jpa'
             entry 'spring-boot-starter-web'
@@ -40,6 +41,10 @@ dependencyManagement {
         dependencySet(group: 'org.mapstruct', version: '1.5.5.Final') {
             entry 'mapstruct'
             entry 'mapstruct-processor'
+        }
+        dependencySet(group: 'com.github.ben-manes.caffeine', version: '3.2.0'){
+            entry 'caffeine'
+            entry 'jcache'
         }
     }
 }
@@ -61,9 +66,15 @@ dependencies {
     implementation 'nz.net.ultraq.thymeleaf:thymeleaf-layout-dialect:3.3.0'
     implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity6:3.1.2.RELEASE'
 
-    implementation 'org.webjars:jquery:3.6.3'
-    implementation 'org.webjars:bootstrap:5.2.3'
-    implementation 'org.webjars.npm:bootstrap-icons:1.10.5'
+    implementation 'com.giffing.bucket4j.spring.boot.starter:bucket4j-spring-boot-starter:0.12.7'
+    implementation 'com.github.ben-manes.caffeine:caffeine'
+    implementation 'com.github.ben-manes.caffeine:jcache'
+
+
+    implementation 'org.webjars:jquery:3.7.1'
+    implementation 'org.webjars:popper.js:2.9.2'
+    implementation 'org.webjars:bootstrap:5.3.3'
+    implementation 'org.webjars.npm:bootstrap-icons:1.11.3'
     implementation 'org.webjars:webjars-locator:0.46'
     implementation 'org.mariadb.jdbc:mariadb-java-client:3.3.3'
     implementation 'com.sun.mail:jakarta.mail:2.0.1'
