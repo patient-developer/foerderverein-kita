@@ -3,6 +3,9 @@ server:
   servlet:
     context-path: ${SERVER_CONTEXT_PATH:}
 spring:
+  cache:
+    cache-names:
+      - rate-limit-bucket
   servlet:
     multipart:
       max-file-size: 10MB
@@ -21,3 +24,14 @@ spring:
         'mail.smtp.auth': 'true'
         'mail.smtp.ssl.enable': 'true'
         'mail.smtp.starttls.enable': 'true'
+bucket4j:
+  enabled: true
+  filters:
+    - url: /kindergarten/elternausschuss/nachricht/absenden
+      cache-name: rate-limit-bucket
+      rate-limits:
+        - bandwidths:
+            - capacity: 1
+              time: 1
+              unit: minutes
+              refill-speed: interval

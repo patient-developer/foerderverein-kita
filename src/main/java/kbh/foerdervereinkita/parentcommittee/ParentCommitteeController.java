@@ -42,7 +42,7 @@ public class ParentCommitteeController {
     return new ModelAndView(Views.PARENT_COMMITTEE_MESSAGE);
   }
 
-  @PostMapping(path = "/elternausschuss/nachricht")
+  @PostMapping(path = "/elternausschuss/nachricht/absenden")
   public ModelAndView parentCommitteeMessagePost(
       @Valid @ModelAttribute("form") ParentCommitteeMessageForm form,
       RedirectAttributes attributes) {
