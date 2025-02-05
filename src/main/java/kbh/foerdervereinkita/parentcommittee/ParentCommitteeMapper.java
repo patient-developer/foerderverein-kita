@@ -14,12 +14,14 @@ public interface ParentCommitteeMapper {
   @Mapping(target = "mail", source = "mail")
   @Mapping(target = "phone", source = "phone")
   @Mapping(target = "content", expression = "java(form.getContent().trim())")
+  @Mapping(target = "acceptedGdpr", source = "acceptsGdpr")
   ParentCommitteeMessage toMessage(ParentCommitteeMessageForm form);
 
   @Mapping(target = "id", ignore = true)
   @Mapping(target = "mail", source = "mail")
   @Mapping(target = "phone", source = "phone")
   @Mapping(target = "content", source = "content")
+  @Mapping(target = "acceptedGdpr", source = "acceptedGdpr")
   @Mapping(target = "timestamp", expression = "java(LocalDateTime.now())")
   ParentCommitteeMessageEntity toEntity(ParentCommitteeMessage message);
 
