@@ -8,7 +8,7 @@ plugins {
 apply from: 'gradle/spotless.gradle'
 
 group = 'kbh'
-version = '1.12.0'
+version = '1.12.1'
 
 java {
     sourceCompatibility = '21'

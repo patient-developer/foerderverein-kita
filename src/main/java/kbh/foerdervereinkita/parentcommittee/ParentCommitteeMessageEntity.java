@@ -23,6 +23,9 @@ public class ParentCommitteeMessageEntity {
   @Column(nullable = false, columnDefinition = "MEDIUMTEXT")
   private String content;
 
+  @Column(name = "accepted_gdpr", nullable = false)
+  private boolean acceptedGdpr;
+
   @Column(nullable = false)
   private LocalDateTime timestamp;
 }
