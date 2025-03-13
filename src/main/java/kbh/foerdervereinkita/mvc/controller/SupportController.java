@@ -16,13 +16,13 @@ public class SupportController {
 
   private final MembershipService membershipService;
 
-  @GetMapping("/support")
+  @GetMapping("/unterstuetzung")
   ModelAndView membershipGet() {
     return new ModelAndView(Views.SUPPORT);
   }
 
   @ResponseBody
-  @GetMapping(value = "/support/download", produces = MediaType.APPLICATION_PDF_VALUE)
+  @GetMapping(value = "/unterstuetzung/download", produces = MediaType.APPLICATION_PDF_VALUE)
   public Resource declarationOfMembershipDownloadGet() {
     return membershipService.getDeclarationOfMembership();
   }

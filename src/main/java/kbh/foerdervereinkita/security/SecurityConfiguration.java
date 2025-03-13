@@ -20,7 +20,7 @@ public class SecurityConfiguration {
                 auth.requestMatchers(
                         "/",
                         "/index",
-                        "/support/**",
+                        "/unterstuetzung/**",
                         "/extras/**",
                         "/privacy",
                         "/imprint",
